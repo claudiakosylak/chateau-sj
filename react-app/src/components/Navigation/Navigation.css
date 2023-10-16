@@ -5,3 +5,51 @@
 .hidden {
   display: none;
 }
+
+body {
+  width: 100vw;
+  max-width: 100vW;
+  height: 100vH;
+  max-height: 100vH;
+}
+
+.header {
+  width: 100%;
+  height: 150px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #404040;
+  color: white;
+  padding: 0 50px;
+}
+
+h1 {
+  color: white;
+  font-size: 60px;
+  font-family: 'Ingrid Darling', cursive;
+}
+
+.header-right {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 100%;
+  gap: 30px;
+  justify-content: flex-end;
+}
+
+.phone {
+  font-size: 30px;
+}
+
+.menu-icon {
+  background: none;
+  border: none;
+  color: white;
+}
+
+.menu-icon > i {
+  font-size: 40px;
+}
