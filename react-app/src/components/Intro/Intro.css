@@ -1,0 +1,43 @@
+.intro-wrapper {
+    width: 100%;
+    max-width: 100%;
+    max-height: calc(100vh - 150px);
+    height: 100%;
+    position: relative;
+    z-index: -1;
+}
+
+.intro-wrapper > img {
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+}
+
+.dark-cover {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.411);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.intro-content {
+    width: 40%;
+    height: 50%;
+    color: white;
+}
+
+.intro-content h2 {
+    font-size: 60px;
+}
+
+.intro-content p {
+    font-size: 40px;
+}

@@ -6,13 +6,6 @@
   display: none;
 }
 
-body {
-  width: 100vw;
-  max-width: 100vW;
-  height: 100vH;
-  max-height: 100vH;
-}
-
 .header {
   width: 100%;
   height: 150px;
@@ -23,6 +16,7 @@ body {
   background-color: #404040;
   color: white;
   padding: 0 50px;
+  position: fixed;
 }
 
 h1 {
