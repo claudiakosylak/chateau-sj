@@ -9,35 +9,31 @@ import Menu from "../Menu";
 function ProfileButton() {
   // const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
-  // const ulRef = useRef();
 
-  // const openMenu = () => {
-  //   if (showMenu) return;
-  //   setShowMenu(true);
-  // };
-
-  // useEffect(() => {
-  //   if (!showMenu) return;
-
-  //   const closeMenu = (e) => {
-  //     if (!ulRef.current.contains(e.target)) {
-  //       setShowMenu(false);
-  //     }
-  //   };
-
-  //   document.addEventListener("click", closeMenu);
-
-  //   return () => document.removeEventListener("click", closeMenu);
-  // }, [showMenu]);
 
 
   return (
     <>
-            <OpenModalButton
-              modalComponent={<Menu />}
-              showMenu={showMenu}
-              setShowMenu={setShowMenu}
-            />
+      {!showMenu ? (
+        <button onClick={() => setShowMenu(true)} className="menu-icon">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      ) : (
+        <button onClick={() => {
+          setShowMenu(false)
+        }}
+        className="menu-icon">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      )}
+      {showMenu && (
+        <div id="modal">
+        <div id="modal-background" onClick={() => setShowMenu(false)} />
+        <div id="modal-content">
+          <Menu />
+        </div>
+      </div>
+      )}
     </>
   );
 }
