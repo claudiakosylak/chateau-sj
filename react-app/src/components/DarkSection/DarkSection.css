@@ -1,0 +1,18 @@
+.dark-section-wrapper {
+    background-color: black;
+    right: 0;
+    left: 0;
+    max-width: 100%;
+    height: calc(100vH - 150px);
+    position: relative;
+}
+
+.dark-section-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ECF2F7;
+    border-radius: 32px;
+}
