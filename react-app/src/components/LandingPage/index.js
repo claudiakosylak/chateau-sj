@@ -2,6 +2,7 @@ import React from "react";
 import "./LandingPage.css";
 import Intro from "../Intro";
 import DarkSection from "../DarkSection";
+import SearchApartments from "../SearchApartments";
 
 function LandingPage() {
 
@@ -9,6 +10,7 @@ function LandingPage() {
         <div className="landing-page-wrapper">
             <Intro />
             <DarkSection />
+            <SearchApartments />
         </div>
 
     )

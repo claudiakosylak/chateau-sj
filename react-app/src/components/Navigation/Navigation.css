@@ -17,6 +17,7 @@
   color: white;
   padding: 0 50px;
   position: fixed;
+  z-index: 1;
 }
 
 h1 {

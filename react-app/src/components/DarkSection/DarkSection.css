@@ -32,3 +32,22 @@
     height: 100%;
     border-radius: 32px 0 0 32px;
 }
+
+.dark-section-right {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px 30px;
+    gap: 20px;
+}
+
+h3 {
+    font-size: 55px;
+}
+
+.dark-section-right > p {
+    font-size: 26px;
+    text-align: center;
+}
