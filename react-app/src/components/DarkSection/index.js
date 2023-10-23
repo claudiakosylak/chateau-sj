@@ -1,17 +1,33 @@
 import React from "react";
 import "./DarkSection.css";
+import ContactForm from "../ContactForm";
 
-function DarkSection() {
+function DarkSection({ title, src }) {
 
     return (
         <div className="dark-section-wrapper">
             <div className="dark-section-inner">
                 <div className="dark-section-left">
-                    <img src="https://images.unsplash.com/photo-1580041065738-e72023775cdc?auto=format&fit=crop&q=80&w=2940&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"></img>
+                    <img src={src}></img>
+                    {title === "contact" && (
+                        <div className="contact-left">
+                            <p>1234 Address Dr<br></br>Fresno, CA 00000</p>
+                            <p>(559) 555-5555</p>
+                            <p>chateausanjose@email.com</p>
+                            <p>Office Hours:<br></br>9-5 M-F</p>
+                        </div>
+                    )}
                 </div>
                 <div className="dark-section-right">
-                    <h3>Welcome</h3>
-                    <p>Lorem ipsum dolor sit amet. Et quidem dolor ut commodi omnis est rerum magnam est voluptatem enim ab consectetur eaque. Ea dolorem asperiores est sequi excepturi ut accusamus sapiente ex laborum dolor? In perspiciatis Quis sed esse obcaecati et dolor minima. Eos molestiae quas qui amet galisum qui odit sunt est doloribus incidunt in voluptatem assumenda.</p>
+                    <h3>{title === "welcome" ? "Welcome" : "Contact Us"}</h3>
+                    {title === "welcome" ? (
+                        <p>Lorem ipsum dolor sit amet. Et quidem dolor ut commodi omnis est rerum magnam est voluptatem enim ab consectetur eaque. Ea dolorem asperiores est sequi excepturi ut accusamus sapiente ex laborum dolor? In perspiciatis Quis sed esse obcaecati et dolor minima. Eos molestiae quas qui amet galisum qui odit sunt est doloribus incidunt in voluptatem assumenda.</p>
+                    ) : (
+                        <>
+                            <p>Lorem ipsum dolor sit amet. Et quidem dolor ut commodi omnis est rerum magnam est voluptatem enim ab consectetur eaque</p>
+                            <ContactForm />
+                        </>
+                    )}
                 </div>
             </div>
         </div>
