@@ -1,11 +1,15 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import "./LandingPage.css";
 import Intro from "../Intro";
 import DarkSection from "../DarkSection";
 import SearchApartments from "../SearchApartments";
 import Footer from "../Footer";
 
-function LandingPage({topScrollRef, aboutScrollRef, floorPlanScrollRef, contactScrollRef}) {
+function LandingPage({topScrollRef, aboutScrollRef, floorPlanScrollRef, contactScrollRef, onNavigate}) {
+
+    useEffect(() => {
+        onNavigate();
+    }, [])
 
     return (
         <div className="landing-page-wrapper">

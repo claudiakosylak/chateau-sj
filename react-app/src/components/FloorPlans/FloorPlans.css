@@ -8,6 +8,12 @@
     flex-direction: column;
     align-items: center;
     background-color: #ECF2F7;
+    position: relative;
+}
+
+.floor-plans-ref {
+    position: absolute;
+    top: -150px;
 }
 
 .floor-plans-header-image {

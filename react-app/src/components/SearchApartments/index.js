@@ -67,7 +67,7 @@ function SearchApartments({scrollToRef}) {
                             <input type="number" min="1" placeholder="$" value={maxRent} onChange={(e) => setMaxRent(e.target.value)} className="search-apartments-inputs"></input>
                         </label>
                         <button type="submit">Check Availability</button>
-                        <button>View All Floor Plans</button>
+                        <button onClick={() => history.push("/floor-plans")}>View All Floor Plans</button>
                     </form>
                 </div>
             </div>

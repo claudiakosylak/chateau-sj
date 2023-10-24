@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
-import SignupFormPage from "./components/SignupFormPage";
-import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import LandingPage from "./components/LandingPage";
@@ -13,13 +11,14 @@ function App() {
   const aboutScrollRef = useRef(null);
   const floorPlanScrollRef = useRef(null);
   const contactScrollRef = useRef(null);
+  const searchScrollRef = useRef(null);
 
   const executeScroll = (targetRef) => {
-      console.log(targetRef.current);
-      if (targetRef.current) {
-        targetRef.current.scrollIntoView({ behavior: "smooth" });
-      }
-    };
+    console.log(targetRef.current);
+    if (targetRef.current) {
+      targetRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -30,25 +29,28 @@ function App() {
   return (
     <>
       <Navigation isLoaded={isLoaded}
-      onHomePress={() => executeScroll(topScrollRef)}
-      onAboutPress={() => executeScroll(aboutScrollRef)}
-      onFloorPlanPress={() => executeScroll(floorPlanScrollRef)}
-      onContactPress={() => executeScroll(contactScrollRef)}
+        onHomePress={() => executeScroll(topScrollRef)}
+        onAboutPress={() => executeScroll(aboutScrollRef)}
+        onFloorPlanPress={() => executeScroll(floorPlanScrollRef)}
+        onContactPress={() => executeScroll(contactScrollRef)}
       />
       {isLoaded && (
-        <Switch>
-          <Route exact path="/">
-            <LandingPage
-            topScrollRef={topScrollRef}
-            aboutScrollRef={aboutScrollRef}
-            floorPlanScrollRef={floorPlanScrollRef}
-            contactScrollRef={contactScrollRef}
-            />
-          </Route>
-          <Route exact path="/floor-plans">
-            <FloorPlans />
-          </Route>
-        </Switch>
+          <Switch>
+            <Route exact path="/">
+              <LandingPage
+                topScrollRef={topScrollRef}
+                aboutScrollRef={aboutScrollRef}
+                floorPlanScrollRef={floorPlanScrollRef}
+                contactScrollRef={contactScrollRef}
+                onNavigate={() => executeScroll(topScrollRef)}
+              />
+            </Route>
+            <Route exact path="/floor-plans">
+              <FloorPlans searchScrollRef={searchScrollRef}
+                onNavigate={() => executeScroll(searchScrollRef)}
+              />
+            </Route>
+          </Switch>
       )}
     </>
   );
