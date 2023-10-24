@@ -1,12 +1,22 @@
 import React from 'react';
 import "./Menu.css";
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 
-function Menu({onAboutPress, onFloorPlanPress, onContactPress, closeMenu}) {
+function Menu({onHomePress, onAboutPress, onFloorPlanPress, onContactPress, closeMenu}) {
+    let location = useLocation();
+    console.log("LOCATION: ", location)
+    console.log("IS LOCATION? ", location.pathname === "/")
 
     return (
         <nav className="menu-wrapper">
-            <NavLink exact to="/" className="menu-links">Home</NavLink>
+            {location.pathname !== "/" ? (
+                <NavLink exact to="/" className="menu-links">Home</NavLink>
+            ) : (
+                <div className="menu-links" onClick={() => {
+                    onHomePress();
+                    closeMenu();
+                }}>Home</div>
+            )}
             <div className="menu-links" onClick={() => {
                 onAboutPress();
                 closeMenu();

@@ -1,9 +1,10 @@
 import React from "react";
 import "./Intro.css";
 
-function Intro() {
+function Intro({scrollToRef}) {
     return (
-        <div className="intro-wrapper">
+        <div className="intro-wrapper" >
+            <div className="intro-ref" ref={scrollToRef}></div>
             <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2940&q=80"></img>
             <div className="dark-cover">
                 <div className="intro-content">

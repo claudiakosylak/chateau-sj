@@ -8,6 +8,7 @@ import Navigation from "./components/Navigation";
 import LandingPage from "./components/LandingPage";
 
 function App() {
+  const topScrollRef = useRef(null);
   const aboutScrollRef = useRef(null);
   const floorPlanScrollRef = useRef(null);
   const contactScrollRef = useRef(null);
@@ -28,6 +29,7 @@ function App() {
   return (
     <>
       <Navigation isLoaded={isLoaded}
+      onHomePress={() => executeScroll(topScrollRef)}
       onAboutPress={() => executeScroll(aboutScrollRef)}
       onFloorPlanPress={() => executeScroll(floorPlanScrollRef)}
       onContactPress={() => executeScroll(contactScrollRef)}
@@ -36,6 +38,7 @@ function App() {
         <Switch>
           <Route exact path="/">
             <LandingPage
+            topScrollRef={topScrollRef}
             aboutScrollRef={aboutScrollRef}
             floorPlanScrollRef={floorPlanScrollRef}
             contactScrollRef={contactScrollRef}

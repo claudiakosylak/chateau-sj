@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Menu from "../Menu";
 
-function ProfileButton({onAboutPress, onFloorPlanPress, onContactPress}) {
+function ProfileButton({onHomePress, onAboutPress, onFloorPlanPress, onContactPress}) {
   // const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
 
@@ -26,6 +26,7 @@ function ProfileButton({onAboutPress, onFloorPlanPress, onContactPress}) {
         <div id="modal-background" onClick={() => setShowMenu(false)} />
         <div id="modal-content">
           <Menu
+          onHomePress={onHomePress}
           onAboutPress={onAboutPress}
           onFloorPlanPress={onFloorPlanPress}
           onContactPress={onContactPress}

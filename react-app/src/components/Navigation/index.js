@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
 
-function Navigation({ isLoaded, onAboutPress, onFloorPlanPress, onContactPress }) {
+function Navigation({ isLoaded, onHomePress, onAboutPress, onFloorPlanPress, onContactPress }) {
 	const sessionUser = useSelector(state => state.session.user);
 
 	return (
@@ -13,6 +13,7 @@ function Navigation({ isLoaded, onAboutPress, onFloorPlanPress, onContactPress }
 			<div className="header-right">
 				<p className="phone">(559) 555-5555</p>
 				<ProfileButton
+				onHomePress={onHomePress}
 				onAboutPress={onAboutPress}
 				onFloorPlanPress={onFloorPlanPress}
 				onContactPress={onContactPress}

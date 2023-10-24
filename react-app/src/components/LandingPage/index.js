@@ -5,11 +5,11 @@ import DarkSection from "../DarkSection";
 import SearchApartments from "../SearchApartments";
 import Footer from "../Footer";
 
-function LandingPage({aboutScrollRef, floorPlanScrollRef, contactScrollRef}) {
+function LandingPage({topScrollRef, aboutScrollRef, floorPlanScrollRef, contactScrollRef}) {
 
     return (
         <div className="landing-page-wrapper">
-            <Intro />
+            <Intro scrollToRef={topScrollRef}/>
             <DarkSection title="welcome" src="https://images.unsplash.com/photo-1580041065738-e72023775cdc?auto=format&fit=crop&q=80&w=2940&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             scrollToRef={aboutScrollRef}
             />
