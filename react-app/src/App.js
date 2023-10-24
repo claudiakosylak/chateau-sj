@@ -6,6 +6,7 @@ import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import LandingPage from "./components/LandingPage";
+import FloorPlans from "./components/FloorPlans";
 
 function App() {
   const topScrollRef = useRef(null);
@@ -43,6 +44,9 @@ function App() {
             floorPlanScrollRef={floorPlanScrollRef}
             contactScrollRef={contactScrollRef}
             />
+          </Route>
+          <Route exact path="/floor-plans">
+            <FloorPlans />
           </Route>
         </Switch>
       )}
