@@ -25,8 +25,7 @@ function DarkSection({ title, src, scrollToRef }) {
                         <p>Lorem ipsum dolor sit amet. Et quidem dolor ut commodi omnis est rerum magnam est voluptatem enim ab consectetur eaque. Ea dolorem asperiores est sequi excepturi ut accusamus sapiente ex laborum dolor? In perspiciatis Quis sed esse obcaecati et dolor minima. Eos molestiae quas qui amet galisum qui odit sunt est doloribus incidunt in voluptatem assumenda.</p>
                     ) : (
                         <>
-                            <p>Lorem ipsum dolor sit amet. Et quidem dolor ut commodi omnis est rerum magnam est voluptatem enim ab consectetur eaque</p>
-                            <ContactForm />
+                           <ContactForm />
                         </>
                     )}
                 </div>
