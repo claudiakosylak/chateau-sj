@@ -1,10 +1,33 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { Redirect, useHistory } from "react-router-dom";
 import "./SearchApartments.css";
 
 function SearchApartments({scrollToRef}) {
     const [moveInDate, setMoveInDate] = useState("");
     const [bedrooms, setBedrooms] = useState("");
     const [maxRent, setMaxRent] = useState("");
+    const [errors, setErrors] = useState({});
+    const [hasSubmitted, setHasSubmitted] = useState(false);
+    const currentDate = new Date();
+    const history = useHistory();
+
+    useEffect(() => {
+        const newErrors = {};
+        if (moveInDate === "") newErrors.date = "Please enter desired move-in date.";
+        if (new Date(moveInDate) <= currentDate) newErrors.date = "Move-in date must be in the future.";
+        if (bedrooms === "") newErrors.bedrooms = "Please enter desired number of bedrooms";
+        if (maxRent === "") newErrors.rent = "Please enter a maximum rent number.";
+        setErrors(newErrors);
+    }, [moveInDate, bedrooms, maxRent])
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (Object.keys(errors).length > 0) {
+            setHasSubmitted(true);
+        } else {
+            history.push("/floor-plans");
+        }
+    }
 
     return (
         <div className="search-apartments-wrapper">
@@ -14,11 +37,17 @@ function SearchApartments({scrollToRef}) {
 
                 <div className="search-apartments-inner">
                     <h3>Search Apartments</h3>
-                    <form className="search-apartments-form">
+                    <form className="search-apartments-form" onSubmit={handleSubmit}>
+                        {(hasSubmitted && errors.date) && (
+                            <p className="search-errors">{errors.date}</p>
+                        )}
                         <label>
                             Move-in Date
                             <input type="date" id="move-in-date" value={moveInDate} onChange={(e) => setMoveInDate(e.target.value)} className="search-apartments-inputs"></input>
                         </label>
+                        {(hasSubmitted && errors.bedrooms) && (
+                            <p className="search-errors">{errors.bedrooms}</p>
+                        )}
                         <label>
                             Bedrooms
                             <select value={bedrooms} onChange={(e) => setBedrooms(e.target.value)} className="search-apartments-inputs">
@@ -30,9 +59,12 @@ function SearchApartments({scrollToRef}) {
                                 <option value="4">4</option>
                             </select>
                         </label>
+                        {(hasSubmitted && errors.rent) && (
+                            <p className="search-errors">{errors.rent}</p>
+                        )}
                         <label>
                             Max rent
-                            <input type="number" value={maxRent} onChange={(e) => setMaxRent(e.target.value)} className="search-apartments-inputs"></input>
+                            <input type="number" min="1" placeholder="$" value={maxRent} onChange={(e) => setMaxRent(e.target.value)} className="search-apartments-inputs"></input>
                         </label>
                         <button type="submit">Check Availability</button>
                         <button>View All Floor Plans</button>
