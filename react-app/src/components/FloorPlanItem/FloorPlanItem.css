@@ -1,0 +1,9 @@
+.floor-plan-item-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+    border-radius: 32px;
+    border: 2px solid black;
+    background-color: white;
+}

@@ -58,3 +58,13 @@
 .floor-plans-inputs:focus {
     outline: none;
 }
+
+.floor-plan-results-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 500px;
+    gap: 50px;
+    width: 100%;
+    background-color: #ECF2F7;
+    padding: 50px 100px;
+}

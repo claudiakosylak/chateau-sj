@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+import { apartmentUnits } from "../../mock-data";
 import "./FloorPlans.css";
+import FloorPlanItem from "../FloorPlanItem";
 
 function FloorPlans() {
     const [moveInDate, setMoveInDate] = useState("");
@@ -43,6 +45,11 @@ function FloorPlans() {
                 </label>
             </form>
             <div className="bar"></div>
+            <div className="floor-plan-results-grid">
+                {apartmentUnits.map((apartment, index) => (
+                    <FloorPlanItem apartment={apartment} key={index} />
+                ))}
+            </div>
         </div>
     )
 }
