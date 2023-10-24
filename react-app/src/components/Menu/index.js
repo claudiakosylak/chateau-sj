@@ -2,7 +2,7 @@ import React from 'react';
 import "./Menu.css";
 import { NavLink } from 'react-router-dom';
 
-function Menu({onAboutPress, closeMenu}) {
+function Menu({onAboutPress, onFloorPlanPress, onContactPress, closeMenu}) {
 
     return (
         <nav className="menu-wrapper">
@@ -11,8 +11,14 @@ function Menu({onAboutPress, closeMenu}) {
                 onAboutPress();
                 closeMenu();
                 }}>About</div>
-            <div className="menu-links">Floor Plans</div>
-            <div className="menu-links">Contact Us</div>
+            <div className="menu-links" onClick={() => {
+                onFloorPlanPress();
+                closeMenu();
+            }}>Floor Plans</div>
+            <div className="menu-links" onClick={() => {
+                onContactPress();
+                closeMenu();
+            }}>Contact Us</div>
         </nav>
     )
 }

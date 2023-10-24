@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import "./SearchApartments.css";
 
-function SearchApartments() {
+function SearchApartments({scrollToRef}) {
     const [moveInDate, setMoveInDate] = useState("");
     const [bedrooms, setBedrooms] = useState("");
     const [maxRent, setMaxRent] = useState("");
 
     return (
         <div className="search-apartments-wrapper">
+            <div className="scroll-apartments-ref" ref={scrollToRef}></div>
             <img src="https://plus.unsplash.com/premium_photo-1661887292823-f92842e8609d?auto=format&fit=crop&q=80&w=2940&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"></img>
             <div className="dark-cover">
 

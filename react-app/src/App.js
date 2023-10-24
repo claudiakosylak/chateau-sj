@@ -9,6 +9,8 @@ import LandingPage from "./components/LandingPage";
 
 function App() {
   const aboutScrollRef = useRef(null);
+  const floorPlanScrollRef = useRef(null);
+  const contactScrollRef = useRef(null);
 
   const executeScroll = (targetRef) => {
       console.log(targetRef.current);
@@ -27,18 +29,16 @@ function App() {
     <>
       <Navigation isLoaded={isLoaded}
       onAboutPress={() => executeScroll(aboutScrollRef)}
+      onFloorPlanPress={() => executeScroll(floorPlanScrollRef)}
+      onContactPress={() => executeScroll(contactScrollRef)}
       />
       {isLoaded && (
         <Switch>
-          {/* <Route path="/login" >
-            <LoginFormPage />
-          </Route>
-          <Route path="/signup">
-            <SignupFormPage />
-          </Route> */}
           <Route exact path="/">
             <LandingPage
             aboutScrollRef={aboutScrollRef}
+            floorPlanScrollRef={floorPlanScrollRef}
+            contactScrollRef={contactScrollRef}
             />
           </Route>
         </Switch>

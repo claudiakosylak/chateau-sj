@@ -10,6 +10,11 @@
     justify-content: center;
 }
 
+.scroll-apartments-ref {
+    position: absolute;
+    top: -150px;
+}
+
 .search-apartments-inner {
     position: absolute;
     width: 650px;
