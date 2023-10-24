@@ -46,19 +46,24 @@
 
 .floor-plans-search-wrapper label {
     display: flex;
-    gap: 20px;
+    flex-direction: column;
+    gap: 10px;
     width: 25%;
     height: 100%;
-    align-items: center;
+    padding-left: 15px;
+    font-size: 20px;
 }
 
 .floor-plans-inputs {
     height: 60px;
+    width: 100%;
     flex-grow: 1;
     border-radius: 15px;
     border: 1px solid black;
     padding: 15px;
     font-size: 16px;
+    margin-left: -15px;
+    font-size: 20px;
 }
 
 .floor-plans-inputs:focus {

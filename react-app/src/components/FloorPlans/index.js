@@ -8,10 +8,23 @@ function FloorPlans({searchScrollRef, onNavigate}) {
     const [bedrooms, setBedrooms] = useState("");
     const [bathrooms, setBathrooms] = useState("");
     const [maxRent, setMaxRent] = useState("");
+    const [results, setResults] = useState(apartmentUnits);
 
     useEffect(() => {
         onNavigate();
     }, [])
+
+    useEffect(() => {
+        const newResults = apartmentUnits.filter(result => {
+            let passing = true;
+            if ((moveInDate !== "" && result.availability > new Date(moveInDate)) ||
+            (bedrooms !== "" && result.bedrooms !== parseInt(bedrooms)) ||
+            (bathrooms !== "" && result.bathrooms !== parseInt(bathrooms)) ||
+            (maxRent !== "" && result.monthlyRent > parseInt(maxRent))) passing = false;
+            return passing;
+        })
+        setResults(newResults)
+    }, [moveInDate, bedrooms, bathrooms, maxRent])
 
     return (
         <div className="floor-plans-wrapper">
@@ -24,7 +37,7 @@ function FloorPlans({searchScrollRef, onNavigate}) {
                     Bedrooms
                     <select value={bedrooms} onChange={(e) => setBedrooms(e.target.value)} className="floor-plans-inputs">
                         <option value="" disabled>select</option>
-                        <option value="studio">Studio</option>
+                        <option value="0">Studio</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -42,7 +55,7 @@ function FloorPlans({searchScrollRef, onNavigate}) {
                 </label>
                 <label>
                     Max rent
-                    <input type="number" value={maxRent} onChange={(e) => setMaxRent(e.target.value)} className="floor-plans-inputs"></input>
+                    <input type="number" value={maxRent} placeholder="$" onChange={(e) => setMaxRent(e.target.value)} className="floor-plans-inputs"></input>
                 </label>
                 <label>
                     Move-in Date
@@ -51,7 +64,7 @@ function FloorPlans({searchScrollRef, onNavigate}) {
             </form>
             <div className="bar"></div>
             <div className="floor-plan-results-grid">
-                {apartmentUnits.map((apartment, index) => (
+                {results.map((apartment, index) => (
                     <FloorPlanItem apartment={apartment} key={index} />
                 ))}
             </div>
