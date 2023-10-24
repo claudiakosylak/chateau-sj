@@ -1,12 +1,7 @@
-import React, { useState, useEffect, useRef } from "react";
-import { useDispatch } from "react-redux";
-import { logout } from "../../store/session";
-import OpenModalButton from "../OpenModalButton";
-import LoginFormModal from "../LoginFormModal";
-import SignupFormModal from "../SignupFormModal";
+import React, { useState } from "react";
 import Menu from "../Menu";
 
-function ProfileButton() {
+function ProfileButton({onAboutPress}) {
   // const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
 
@@ -30,7 +25,10 @@ function ProfileButton() {
         <div id="modal">
         <div id="modal-background" onClick={() => setShowMenu(false)} />
         <div id="modal-content">
-          <Menu />
+          <Menu
+          onAboutPress={onAboutPress}
+          closeMenu={() => setShowMenu(false)}
+          />
         </div>
       </div>
       )}

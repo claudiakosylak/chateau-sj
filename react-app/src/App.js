@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import SignupFormPage from "./components/SignupFormPage";
@@ -8,6 +8,15 @@ import Navigation from "./components/Navigation";
 import LandingPage from "./components/LandingPage";
 
 function App() {
+  const aboutScrollRef = useRef(null);
+
+  const executeScroll = (targetRef) => {
+      console.log(targetRef.current);
+      if (targetRef.current) {
+        targetRef.current.scrollIntoView({ behavior: "smooth" });
+      }
+    };
+
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
   useEffect(() => {
@@ -16,7 +25,9 @@ function App() {
 
   return (
     <>
-      <Navigation isLoaded={isLoaded} />
+      <Navigation isLoaded={isLoaded}
+      onAboutPress={() => executeScroll(aboutScrollRef)}
+      />
       {isLoaded && (
         <Switch>
           {/* <Route path="/login" >
@@ -26,7 +37,9 @@ function App() {
             <SignupFormPage />
           </Route> */}
           <Route exact path="/">
-            <LandingPage />
+            <LandingPage
+            aboutScrollRef={aboutScrollRef}
+            />
           </Route>
         </Switch>
       )}

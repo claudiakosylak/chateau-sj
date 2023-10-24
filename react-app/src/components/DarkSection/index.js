@@ -2,10 +2,11 @@ import React from "react";
 import "./DarkSection.css";
 import ContactForm from "../ContactForm";
 
-function DarkSection({ title, src }) {
+function DarkSection({ title, src, scrollToRef }) {
 
     return (
-        <div className="dark-section-wrapper">
+        <div className="dark-section-wrapper" >
+            <div className="dark-section-ref" ref={scrollToRef}></div>
             <div className="dark-section-inner">
                 <div className="dark-section-left">
                     <img src={src}></img>
