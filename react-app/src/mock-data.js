@@ -1,4 +1,3 @@
-
 export const apartmentUnits = [
     {
       name: "Plan A",

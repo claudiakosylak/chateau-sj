@@ -7,3 +7,49 @@
     border: 2px solid black;
     background-color: white;
 }
+
+.floor-plan-item-wrapper h4 {
+    font-size: 30px;
+}
+
+.bed-bath-feet {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-top: 30px;
+}
+
+.floor-plan-item-wrapper img {
+    width: 100%;
+    height: 50%;
+    object-fit: cover;
+    border-radius: 15px;
+    margin-top: 30px;
+}
+
+.rent-deposit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #CCBA91;
+    border-radius: 15px;
+    width: 100%;
+    padding: 15px;
+    margin-top: 20px;
+}
+
+.availability-button {
+    background-color: black;
+    color: white;
+    border-radius: 15px;
+    border: none;
+    padding: 15px;
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+.availability-button:hover {
+    background-color: #404040;
+}
