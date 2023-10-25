@@ -8,6 +8,7 @@
   justify-content: center;
   align-items: center;
   z-index: 2;
+  overflow: hidden;
 }
 
 #modal-background {
@@ -18,6 +19,16 @@
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.7);
   z-index: 1;
+  animation: .5s ease-in 0s fadein;
+}
+
+@keyframes fadein {
+  from {
+    filter: opacity(0%);
+  }
+  to {
+    filter: opacity(100%);
+  }
 }
 
 #modal-content {
@@ -27,4 +38,11 @@
   height: 100%;
   width: 450px;
   z-index: 3;
+  animation: .5s ease-in 0s 1 slidein;
+}
+
+@keyframes slidein {
+  0% {
+      transform: translateY(-100%);
+  }
 }

@@ -10,7 +10,7 @@ function Navigation({ isLoaded, onHomePress, onAboutPress, onFloorPlanPress, onC
 
 	return (
 		<div className="header">
-			<h1 onClick={() => history.push("/")}>Chateau San Jose</h1>
+			<h1>Chateau San Jose</h1>
 			<div className="header-right">
 				<p className="phone">(559) 555-5555</p>
 				<ProfileButton
