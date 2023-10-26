@@ -1,6 +1,7 @@
 from flask.cli import AppGroup
 from .users import seed_users, undo_users
 from .apartments import seed_apartments, undo_apartments
+from .floor_plans import seed_floor_plans, undo_floor_plans
 
 from app.models.db import db, environment, SCHEMA
 
@@ -18,8 +19,10 @@ def seed():
         # the schema name (see comment in users.py undo_users function).
         # Make sure to add all your other model's undo functions below
         undo_apartments()
+        undo_floor_plans()
         undo_users()
     seed_users()
+    seed_floor_plans()
     seed_apartments()
     # Add other seed functions here
 
@@ -28,5 +31,6 @@ def seed():
 @seed_commands.command('undo')
 def undo():
     undo_apartments()
+    undo_floor_plans()
     undo_users()
     # Add other undo functions here

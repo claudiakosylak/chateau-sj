@@ -5,7 +5,7 @@ function FloorPlanItem({apartment}) {
 
     return (
         <div className="floor-plan-item-wrapper">
-            <h4>{apartment.name}</h4>
+            <h4>{apartment.floor_plan}</h4>
             <div className="bed-bath-feet">
                 <p>{apartment.bedrooms !== 0 && apartment.bedrooms}{apartment.bedrooms === 0 ? "STUDIO" : apartment.bedrooms === 1 ? " BED" : " BEDS"}</p>
                 <p>{apartment.bathrooms} {apartment.bathrooms === 1 ? "BATH" : "BATHS"}</p>

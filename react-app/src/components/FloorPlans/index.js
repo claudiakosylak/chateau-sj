@@ -1,21 +1,27 @@
 import React, { useState, useEffect } from "react";
-import { apartmentUnits } from "../../mock-data";
+// import { apartmentUnits } from "../../mock-data";
 import "./FloorPlans.css";
 import FloorPlanItem from "../FloorPlanItem";
+import { useDispatch, useSelector } from "react-redux";
+import { getApartmentsThunk } from "../../store/apartment";
 
 function FloorPlans({searchScrollRef, onNavigate}) {
     const [moveInDate, setMoveInDate] = useState("");
     const [bedrooms, setBedrooms] = useState("");
     const [bathrooms, setBathrooms] = useState("");
     const [maxRent, setMaxRent] = useState("");
-    const [results, setResults] = useState(apartmentUnits);
+    const apartments = useSelector(state => state.apartment.apartments)
+    let apartmentUnits = Object.values(apartments)
+    const [results, setResults] = useState(apartmentUnits || []);
+    const dispatch = useDispatch();
 
     useEffect(() => {
         onNavigate();
-    }, [])
+        dispatch(getApartmentsThunk())
+    }, [dispatch])
 
     useEffect(() => {
-        const newResults = apartmentUnits.filter(result => {
+        const newResults = apartmentUnits?.filter(result => {
             let passing = true;
             if ((moveInDate !== "" && result.availability > new Date(moveInDate)) ||
             (bedrooms !== "" && result.bedrooms !== parseInt(bedrooms)) ||
@@ -25,6 +31,8 @@ function FloorPlans({searchScrollRef, onNavigate}) {
         })
         setResults(newResults)
     }, [moveInDate, bedrooms, bathrooms, maxRent])
+
+
 
     return (
         <div className="floor-plans-wrapper">
