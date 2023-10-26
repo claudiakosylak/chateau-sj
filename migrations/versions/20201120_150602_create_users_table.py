@@ -34,13 +34,13 @@ def upgrade():
 
     op.create_table('apartments',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('floor_plan', sa.Integer(), nullable=False),
+    sa.Column('floor_plan', sa.String(length=10), nullable=False),
     sa.Column('bedrooms', sa.Integer(), nullable=False),
     sa.Column('bathrooms', sa.Integer(), nullable=False),
     sa.Column('square_feet', sa.Integer(), nullable=False),
     sa.Column('monthly_rent', sa.Integer(), nullable=False),
     sa.Column('deposit_amount', sa.Integer(), nullable=False),
-    sa.Column('floor_plan_image', sa.String(length=300), nullable=False),
+    sa.Column('floor_plan_image', sa.String(length=300)),
     sa.Column('is_available', sa.Boolean(), nullable=False),
     sa.Column('date_available', sa.Date(), nullable=False),
     sa.PrimaryKeyConstraint('id')

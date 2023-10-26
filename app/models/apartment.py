@@ -1,13 +1,13 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 
 class Apartment(db.Model):
-    __tablename__ = "apartment"
+    __tablename__ = "apartments"
 
     if environment == "production":
         __table_args__ = {"schema": SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    floor_plan = db.Column(db.Integer, nullable=False)
+    floor_plan = db.Column(db.String(10), nullable=False)
     bedrooms = db.Column(db.Integer, nullable=False)
     bathrooms = db.Column(db.Integer, nullable=False)
     square_feet = db.Column(db.Integer, nullable=False)
