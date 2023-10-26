@@ -13,7 +13,6 @@ class Apartment(db.Model):
     square_feet = db.Column(db.Integer, nullable=False)
     monthly_rent = db.Column(db.Integer, nullable=False)
     deposit_amount = db.Column(db.Integer, nullable=False)
-    floor_plan_image = db.String(db.String(300))
     is_available = db.Column(db.Boolean, nullable=False)
     date_available = db.Column(db.Date, nullable=False)
 
@@ -26,7 +25,6 @@ class Apartment(db.Model):
             'square_feet': self.square_feet,
             'monthly_rent': self.monthly_rent,
             'deposit_amount': self.deposit_amount,
-            'floor_plan_image': self.floor_plan_image,
             'is_available': self.is_available,
             'date_available': self.date_available
         }

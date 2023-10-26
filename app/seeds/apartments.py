@@ -214,7 +214,7 @@ def seed_apartments():
     for apartment in apartmentUnits:
         for i in range(apartment["availableUnits"]):
             available = datetime.strptime(f"{random.randint(2023, 2024)}-{random.randint(1, 12)}-{random.randint(1, 28)}", '%Y-%m-%d')
-            new_apartment = Apartment(floor_plan=apartment["name"], bedrooms=apartment["bedrooms"], bathrooms=apartment["bathrooms"], square_feet=apartment["squareFeet"], monthly_rent=apartment["monthlyRent"], deposit_amount=apartment["deposit"], floor_plan_image="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688", is_available=(available <= today), date_available=available)
+            new_apartment = Apartment(floor_plan=apartment["name"], bedrooms=apartment["bedrooms"], bathrooms=apartment["bathrooms"], square_feet=apartment["squareFeet"], monthly_rent=apartment["monthlyRent"], deposit_amount=apartment["deposit"], is_available=(available <= today), date_available=available)
             db.session.add(new_apartment)
     db.session.commit()
 
