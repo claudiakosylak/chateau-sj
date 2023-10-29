@@ -9,6 +9,7 @@ import { getFloorPlansThunk } from "./store/floor_plan";
 
 
 function App() {
+  const [criteria, setCriteria] = useState(null);
   const floorPlans = useSelector(state => state.floorPlan.floorPlans)
   let floorPlanArray = Object.values(floorPlans);
   const topScrollRef = useRef(null);
@@ -48,12 +49,15 @@ function App() {
                 floorPlanScrollRef={floorPlanScrollRef}
                 contactScrollRef={contactScrollRef}
                 onNavigate={() => executeScroll(topScrollRef)}
+                setCriteria={setCriteria}
               />
             </Route>
             <Route exact path="/floor-plans">
               <FloorPlans searchScrollRef={searchScrollRef}
                 onNavigate={() => executeScroll(searchScrollRef)}
                 floorPlans={floorPlanArray}
+                criteria={criteria}
+                setCriteria={setCriteria}
               />
             </Route>
           </Switch>

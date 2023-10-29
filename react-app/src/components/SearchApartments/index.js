@@ -3,7 +3,7 @@ import { Redirect, useHistory } from "react-router-dom";
 import "./SearchApartments.css";
 import { maxRents } from '../../mock-data';
 
-function SearchApartments({ scrollToRef }) {
+function SearchApartments({ scrollToRef, setCriteria }) {
     const [moveInDate, setMoveInDate] = useState("");
     const [bedrooms, setBedrooms] = useState("");
     const [maxRent, setMaxRent] = useState("");
@@ -17,7 +17,7 @@ function SearchApartments({ scrollToRef }) {
         if (moveInDate === "") newErrors.date = "Please enter desired move-in date.";
         if (new Date(moveInDate) <= currentDate) newErrors.date = "Move-in date must be in the future.";
         if (bedrooms === "") newErrors.bedrooms = "Please enter desired number of bedrooms";
-        if (maxRent === "") newErrors.rent = "Please enter a maximum rent number.";
+        if (maxRent === "") newErrors.rent = "Please select a maximum rent number.";
         setErrors(newErrors);
     }, [moveInDate, bedrooms, maxRent])
 
@@ -26,6 +26,12 @@ function SearchApartments({ scrollToRef }) {
         if (Object.keys(errors).length > 0) {
             setHasSubmitted(true);
         } else {
+            const criteria = {
+                moveInDate,
+                bedrooms,
+                maxRent
+            }
+            setCriteria(criteria)
             history.push("/floor-plans");
         }
     }
