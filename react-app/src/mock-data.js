@@ -200,3 +200,6 @@ export const apartmentUnits = [
       availableUnits: 3,
     },
   ];
+
+
+export const maxRents = [1500, 1600, 1700, 1800, 1900, 2000, 2100, 2200, 2300, 2400, 2500]

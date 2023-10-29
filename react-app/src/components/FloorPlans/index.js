@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import "./FloorPlans.css";
 import FloorPlanItem from "../FloorPlanItem";
 import { useDispatch } from "react-redux";
+import { maxRents } from "../../mock-data";
 
 function FloorPlans({searchScrollRef, onNavigate, floorPlans}) {
     const [moveInDate, setMoveInDate] = useState("");
@@ -11,6 +12,7 @@ function FloorPlans({searchScrollRef, onNavigate, floorPlans}) {
     const [maxRent, setMaxRent] = useState("");
     const [results, setResults] = useState(floorPlans);
     const dispatch = useDispatch();
+    const today = new Date();
 
     useEffect(() => {
         onNavigate();
@@ -62,12 +64,17 @@ function FloorPlans({searchScrollRef, onNavigate, floorPlans}) {
                     </select>
                 </label>
                 <label>
-                    Max rent
-                    <input type="number" value={maxRent} placeholder="$" onChange={(e) => setMaxRent(e.target.value)} className="floor-plans-inputs"></input>
+                    Max Rent
+                    <select value={maxRent} onChange={(e) => setMaxRent(e.target.value)} className="floor-plans-inputs">
+                        <option value="" disabled>select</option>
+                        {maxRents.map(rent => (
+                            <option value={rent.toString()} key={rent}>${rent}</option>
+                        ))}
+                    </select>
                 </label>
                 <label>
                     Move-in Date
-                    <input type="date" id="move-in-date" value={moveInDate} onChange={(e) => setMoveInDate(e.target.value)} className="floor-plans-inputs"></input>
+                    <input type="date" id="move-in-date" value={moveInDate} min={today} onChange={(e) => setMoveInDate(e.target.value)} className="floor-plans-inputs"></input>
                 </label>
             </form>
             <div className="bar"></div>

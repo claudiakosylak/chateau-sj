@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Redirect, useHistory } from "react-router-dom";
 import "./SearchApartments.css";
+import { maxRents } from '../../mock-data';
 
-function SearchApartments({scrollToRef}) {
+function SearchApartments({ scrollToRef }) {
     const [moveInDate, setMoveInDate] = useState("");
     const [bedrooms, setBedrooms] = useState("");
     const [maxRent, setMaxRent] = useState("");
@@ -63,8 +64,13 @@ function SearchApartments({scrollToRef}) {
                             <p className="search-errors">{errors.rent}</p>
                         )}
                         <label>
-                            Max rent
-                            <input type="number" min="1" placeholder="$" value={maxRent} onChange={(e) => setMaxRent(e.target.value)} className="search-apartments-inputs"></input>
+                            Max Rent
+                            <select value={maxRent} onChange={(e) => setMaxRent(e.target.value)} className="search-apartments-inputs">
+                                <option value="" disabled>select</option>
+                                {maxRents.map(rent => (
+                                    <option value={rent.toString()} key={rent}>${rent}</option>
+                                ))}
+                            </select>
                         </label>
                         <button type="submit">Check Availability</button>
                         <button onClick={() => history.push("/floor-plans")}>View All Floor Plans</button>
