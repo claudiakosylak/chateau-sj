@@ -17,5 +17,4 @@ def apartment(id):
     Query for an apartment by id and returns that apartment in a dictionary
     """
     apartment = Apartment.query.get(id)
-    print("🍎 ", apartment.to_dict())
     return apartment.to_dict()

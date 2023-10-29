@@ -18,5 +18,6 @@ class Apartment(db.Model):
             'id': self.id,
             'is_available': self.is_available,
             'date_available': self.date_available,
-            'floor_plan': self.floor_plan.to_dict()
+            'floor_plan_id': self.floor_plan_id
+            # 'floor_plan': self.floor_plan.to_dict()
         }

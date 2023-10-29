@@ -24,6 +24,6 @@ class FloorPlan(db.Model):
             'bathrooms': self.bathrooms,
             'square_feet': self.square_feet,
             'monthly_rent': self.monthly_rent,
-            'deposit_amount': self.deposit_amount,
-            'apartments': [apartment.to_dict() for apartment in self.apartments]
+            'deposit_amount': self.deposit_amount
+            # 'apartments': [apartment.to_dict() for apartment in self.apartments]
         }
