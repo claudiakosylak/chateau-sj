@@ -1,12 +1,16 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import LandingPage from "./components/LandingPage";
 import FloorPlans from "./components/FloorPlans";
+import { getFloorPlansThunk } from "./store/floor_plan";
+
 
 function App() {
+  const floorPlans = useSelector(state => state.floorPlan.floorPlans)
+  let floorPlanArray = Object.values(floorPlans);
   const topScrollRef = useRef(null);
   const aboutScrollRef = useRef(null);
   const floorPlanScrollRef = useRef(null);
@@ -24,6 +28,7 @@ function App() {
   const [isLoaded, setIsLoaded] = useState(false);
   useEffect(() => {
     dispatch(authenticate()).then(() => setIsLoaded(true));
+    dispatch(getFloorPlansThunk())
   }, [dispatch]);
 
   return (
@@ -48,6 +53,7 @@ function App() {
             <Route exact path="/floor-plans">
               <FloorPlans searchScrollRef={searchScrollRef}
                 onNavigate={() => executeScroll(searchScrollRef)}
+                floorPlans={floorPlanArray}
               />
             </Route>
           </Switch>
