@@ -11,7 +11,9 @@ function DarkSection({ title, src, scrollToRef }) {
             {/* <ScrollAnimation animateIn="fadeIn" className="dark-section-inner" animateOnce={false} duration={1}> */}
             <div className="dark-section-inner">
                 <div className="dark-section-left">
-                    <img src={src}></img>
+                    {title !== "contact" && (
+                        <img src={src}></img>
+                    )}
                     {title === "contact" && (
                         <div className="contact-left">
                             <p>1234 Address Dr<br></br>Fresno, CA 00000</p>

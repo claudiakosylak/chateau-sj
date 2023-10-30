@@ -11,6 +11,26 @@
   overflow: hidden;
 }
 
+#modal-background-close {
+  position: fixed;
+  top: 150px;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1;
+  animation: .5s ease-in 0s fadeout;
+}
+
+@keyframes fadeout {
+  from {
+    filter: opacity(100%);
+  }
+  to {
+    filter: opacity(0%);
+  }
+}
+
 #modal-background {
   position: fixed;
   top: 150px;
@@ -41,8 +61,25 @@
   animation: .5s ease-in 0s 1 slidein;
 }
 
+#modal-content-close {
+  position: absolute;
+  right: 0;
+  top: -100vH;
+  height: 100%;
+  width: 450px;
+  max-width: 450px;
+  z-index: 3;
+  animation: .5s ease-in 0s 1 slideout;
+}
+
 @keyframes slidein {
   0% {
       transform: translateY(-100%);
+  }
+}
+
+@keyframes slideout {
+  0% {
+      transform: translateY(100%);
   }
 }
