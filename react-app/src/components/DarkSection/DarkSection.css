@@ -77,3 +77,22 @@ h3 {
     background-color: #ccba91;
     border-radius: 32px 0 0 32px;
 }
+
+@media screen and (max-width: 1024px) {
+    .dark-section-right {
+        gap: 0;
+        padding: 15px;
+    }
+    .contact-left {
+        font-size: 25px;
+    }
+    .contact-left p {
+        font-size: 25px;
+    }
+}
+
+/* @media screen and (max-width: 767px) {
+    .dark-section-inner {
+        flex-direction: column;
+    }
+} */

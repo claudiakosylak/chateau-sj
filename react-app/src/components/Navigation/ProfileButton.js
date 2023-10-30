@@ -19,37 +19,34 @@ function ProfileButton({ onHomePress, onAboutPress, onFloorPlanPress, onContactP
   return (
     <>
       {!showMenu ? (
-        <button onClick={() => setShowMenu(true)} className="menu-icon">
-          {/* <i class="fa-solid fa-bars"></i> */}
-        </button>
+        <div className="burger-wrapper" onClick={() => setShowMenu(true)}>
+          <button className="menu-icon"></button>
+        </div>
       ) : (
-        <button onClick={() => {
-          handleClose()
-        }}
-          className="menu-icon-open">
-          {/* <i class="fa-solid fa-xmark"></i> */}
-        </button>
+        <div className="burger-wrapper" onClick={handleClose}>
+          <button className="menu-icon-open"></button>
+        </div>
       )}
 
       {showMenu && (
         <div id="modal">
-            <div id={"modal-background"} onClick={() => setShowMenu(false)} />
-            {/* <ReactCSSTransitionGroup */}
-            {/* transitionName="menu-opening"
+          <div id={"modal-background"} onClick={() => setShowMenu(false)} />
+          {/* <ReactCSSTransitionGroup */}
+          {/* transitionName="menu-opening"
             transitionEnterTimeout={500}
             transitionLeaveTimeout={300} */}
-            {/* > */}
-            <div id={!closeTransition ? "modal-content" : "modal-content-close"}>
-              <Menu
-                onHomePress={onHomePress}
-                onAboutPress={onAboutPress}
-                onFloorPlanPress={onFloorPlanPress}
-                onContactPress={onContactPress}
-                closeMenu={handleClose}
-              />
-            </div>
-        {/* </ReactCSSTransitionGroup> */}
+          {/* > */}
+          <div id={!closeTransition ? "modal-content" : "modal-content-close"}>
+            <Menu
+              onHomePress={onHomePress}
+              onAboutPress={onAboutPress}
+              onFloorPlanPress={onFloorPlanPress}
+              onContactPress={onContactPress}
+              closeMenu={handleClose}
+            />
           </div>
+          {/* </ReactCSSTransitionGroup> */}
+        </div>
       )}
     </>
   );

@@ -50,3 +50,27 @@
 .contact-errors {
     color: red;
 }
+
+@media screen and (max-width: 1339px) {
+    .contact-form {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 1159px) {
+    .contact-form-inputs {
+        width: 60%;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .contact-form label {
+        flex-direction: column;
+        height: auto;
+        align-items: flex-start;
+    }
+    .contact-form-inputs {
+        height: auto;
+        width: 100%;
+    }
+}
