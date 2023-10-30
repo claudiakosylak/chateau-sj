@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./Intro.css";
-import ScrollAnimation from 'react-animate-on-scroll';
 
 function Intro({ scrollToRef }) {
     const images = [
@@ -21,10 +20,11 @@ function Intro({ scrollToRef }) {
             <div className="intro-ref" ref={scrollToRef}></div>
             <img src={images[currentImage]}></img>
             <div className="dark-cover">
-                <ScrollAnimation animateIn="fadeIn" className="intro-content" animateOnce={false} duration={2} animateOut={"fadeOut"}>
+                <div className="intro-content">
                     <h2>Picture yourself here...</h2>
                     <p>Lorem ipsum dolor sit amet. Qui unde corrupti qui voluptas dolor est quis.</p>
-                </ScrollAnimation>
+                </div>
+
             </div>
         </div>
     )

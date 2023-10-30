@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Menu from "../Menu";
-// import ReactCSSTransitionGroup from 'react-transition-group';
 
 function ProfileButton({ onHomePress, onAboutPress, onFloorPlanPress, onContactPress }) {
   // const dispatch = useDispatch();

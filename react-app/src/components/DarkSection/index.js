@@ -1,7 +1,6 @@
 import React from "react";
 import "./DarkSection.css";
 import ContactForm from "../ContactForm";
-import ScrollAnimation from 'react-animate-on-scroll';
 
 function DarkSection({ title, src, scrollToRef }) {
 
