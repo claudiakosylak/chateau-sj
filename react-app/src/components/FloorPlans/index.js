@@ -8,6 +8,14 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 function FloorPlans({ searchScrollRef, onNavigate, floorPlans, criteria, setCriteria }) {
     const history = useHistory();
+    const [moveInDate, setMoveInDate] = useState(criteria ? criteria.moveInDate : "");
+    const [bedrooms, setBedrooms] = useState(criteria ? criteria.bedrooms : "");
+    const [bathrooms, setBathrooms] = useState("");
+    const [maxRent, setMaxRent] = useState(criteria ? criteria.maxRent : "");
+    const [results, setResults] = useState(floorPlans);
+    const dispatch = useDispatch();
+    const today = new Date();
+
     const filterResults = () => {
         const newResults = floorPlans.filter(result => {
             let passing = true;
@@ -23,14 +31,6 @@ function FloorPlans({ searchScrollRef, onNavigate, floorPlans, criteria, setCrit
         })
         setResults(newResults)
     }
-    const [moveInDate, setMoveInDate] = useState(criteria ? criteria.moveInDate : "");
-    const [bedrooms, setBedrooms] = useState(criteria ? criteria.bedrooms : "");
-    const [bathrooms, setBathrooms] = useState("");
-    const [maxRent, setMaxRent] = useState(criteria ? criteria.maxRent : "");
-    const [results, setResults] = useState(floorPlans);
-    const dispatch = useDispatch();
-    const today = new Date();
-
 
     useEffect(() => {
         onNavigate();
@@ -41,6 +41,15 @@ function FloorPlans({ searchScrollRef, onNavigate, floorPlans, criteria, setCrit
     }, [dispatch])
 
     useEffect(() => {
+        if (criteria) {
+            filterResults();
+            setCriteria(null);
+        } else {
+            setResults(floorPlans)
+        }
+    }, [floorPlans])
+
+    useEffect(() => {
         filterResults();
     }, [moveInDate, bedrooms, bathrooms, maxRent])
 
@@ -48,7 +57,8 @@ function FloorPlans({ searchScrollRef, onNavigate, floorPlans, criteria, setCrit
 
     return (
         <div className="floor-plans-wrapper">
-            {console.log("HISTORY: ", history)}
+            {console.log("FLOOR PLANS: ", floorPlans)}
+            {console.log("RESULTS: ", results)}
             <div className="floor-plans-ref" ref={searchScrollRef}></div>
             <img className="floor-plans-header-image" src="https://plus.unsplash.com/premium_photo-1661962302410-36d3325cf9ce?auto=format&fit=crop&q=80&w=2832&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"></img>
             <h2>Floor Plans</h2>
