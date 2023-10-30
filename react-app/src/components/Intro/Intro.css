@@ -26,23 +26,36 @@
     top: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.411);
+    background-color: rgba(0, 0, 0, 0.311);
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
+    animation: 2s ease-in 0s darken;
+}
+
+@keyframes darken {
+    from {
+        filter: opacity(0%);
+    }
+    to {
+        filter: opacity(100%);
+    }
 }
 
 .intro-content {
     width: 40%;
-    height: 50%;
+    height: auto;
     color: white;
+    background-color: #ccba91;
+    border-radius: 32px;
+    box-shadow: 0 0 20px 20px #CCBA91;
 }
 
 .intro-content h2 {
-    font-size: 60px;
+    font-size: 50px;
 }
 
 .intro-content p {
-    font-size: 40px;
+    font-size: 30px;
 }

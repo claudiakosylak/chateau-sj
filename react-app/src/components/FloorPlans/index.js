@@ -57,8 +57,6 @@ function FloorPlans({ searchScrollRef, onNavigate, floorPlans, criteria, setCrit
 
     return (
         <div className="floor-plans-wrapper">
-            {console.log("FLOOR PLANS: ", floorPlans)}
-            {console.log("RESULTS: ", results)}
             <div className="floor-plans-ref" ref={searchScrollRef}></div>
             <img className="floor-plans-header-image" src="https://plus.unsplash.com/premium_photo-1661962302410-36d3325cf9ce?auto=format&fit=crop&q=80&w=2832&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"></img>
             <h2>Floor Plans</h2>

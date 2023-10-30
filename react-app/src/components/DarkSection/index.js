@@ -1,12 +1,14 @@
 import React from "react";
 import "./DarkSection.css";
 import ContactForm from "../ContactForm";
+import ScrollAnimation from 'react-animate-on-scroll';
 
 function DarkSection({ title, src, scrollToRef }) {
 
     return (
         <div className="dark-section-wrapper" >
             <div className="dark-section-ref" ref={scrollToRef}></div>
+            {/* <ScrollAnimation animateIn="fadeIn" className="dark-section-inner" animateOnce={false} duration={1}> */}
             <div className="dark-section-inner">
                 <div className="dark-section-left">
                     <img src={src}></img>
@@ -30,6 +32,7 @@ function DarkSection({ title, src, scrollToRef }) {
                     )}
                 </div>
             </div>
+            {/* </ScrollAnimation> */}
         </div>
     )
 }
