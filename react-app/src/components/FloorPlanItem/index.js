@@ -1,7 +1,13 @@
 import React from "react";
 import "./FloorPlanItem.css";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 function FloorPlanItem({floorPlan}) {
+    const history = useHistory();
+
+    const openFloorPlan = (id) => {
+        history.push(`/floor-plans/${id}`);
+    }
 
     return (
         <div className="floor-plan-item-wrapper">
@@ -11,12 +17,12 @@ function FloorPlanItem({floorPlan}) {
                 <p>{floorPlan.bathrooms} {floorPlan.bathrooms === 1 ? "BATH" : "BATHS"}</p>
                 <p>{floorPlan.square_feet} SQ. FT.</p>
             </div>
-            <img src="https://images.unsplash.com/photo-1582239052618-4e2324cef034?auto=format&fit=crop&q=80&w=2874&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"></img>
+            <img src="https://images.unsplash.com/photo-1582239052618-4e2324cef034"></img>
             <div className="rent-deposit">
                 <p>Starting at ${floorPlan.monthly_rent}</p>
                 <p>Deposit ${floorPlan.deposit_amount}</p>
             </div>
-            <button className="availability-button">Availability</button>
+            <button className="availability-button" onClick={() => openFloorPlan(floorPlan.id)}>Availability</button>
         </div>
     )
 }

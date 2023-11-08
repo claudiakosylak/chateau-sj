@@ -40,6 +40,12 @@ def upgrade():
     sa.Column('square_feet', sa.Integer(), nullable=False),
     sa.Column('monthly_rent', sa.Integer(), nullable=False),
     sa.Column('deposit_amount', sa.Integer(), nullable=False),
+    sa.Column('image_1', sa.String(length=255), nullable=False),
+    sa.Column('image_2', sa.String(length=255)),
+    sa.Column('image_3', sa.String(length=255)),
+    sa.Column('image_4', sa.String(length=255)),
+    sa.Column('image_5', sa.String(length=255)),
+    sa.Column('image_6', sa.String(length=255)),
     sa.PrimaryKeyConstraint('id')
     )
 

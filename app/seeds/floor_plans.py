@@ -4,7 +4,7 @@ from .apartments import apartmentUnits
 
 def seed_floor_plans():
     for plan in apartmentUnits:
-        new_plan = FloorPlan(name=plan["name"], bedrooms=plan["bedrooms"], bathrooms=plan["bathrooms"], square_feet=plan["squareFeet"], monthly_rent=plan["monthlyRent"], deposit_amount=plan["deposit"])
+        new_plan = FloorPlan(name=plan["name"], bedrooms=plan["bedrooms"], bathrooms=plan["bathrooms"], square_feet=plan["squareFeet"], monthly_rent=plan["monthlyRent"], deposit_amount=plan["deposit"], image_1="https://images.unsplash.com/photo-1582239052618-4e2324cef034")
         db.session.add(new_plan)
     db.session.commit()
 

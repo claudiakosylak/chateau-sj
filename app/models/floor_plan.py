@@ -13,6 +13,12 @@ class FloorPlan(db.Model):
     square_feet = db.Column(db.Integer, nullable=False)
     monthly_rent = db.Column(db.Integer, nullable=False)
     deposit_amount = db.Column(db.Integer, nullable=False)
+    image_1 = db.Column(db.String(255), nullable=False)
+    image_2 = db.Column(db.String(255))
+    image_3 = db.Column(db.String(255))
+    image_4 = db.Column(db.String(255))
+    image_5 = db.Column(db.String(255))
+    image_6 = db.Column(db.String(255))
 
     apartments = db.relationship("Apartment", back_populates="floor_plan", cascade="all, delete-orphan")
 
@@ -24,6 +30,12 @@ class FloorPlan(db.Model):
             'bathrooms': self.bathrooms,
             'square_feet': self.square_feet,
             'monthly_rent': self.monthly_rent,
-            'deposit_amount': self.deposit_amount
+            'deposit_amount': self.deposit_amount,
+            'image_1': self.image_1,
+            'image_2': self.image_2,
+            'image_3': self.image_3,
+            'image_4': self.image_4,
+            'image_5': self.image_5,
+            'image_6': self.image_6
             # 'apartments': [apartment.to_dict() for apartment in self.apartments]
         }

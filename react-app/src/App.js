@@ -6,6 +6,7 @@ import Navigation from "./components/Navigation";
 import LandingPage from "./components/LandingPage";
 import FloorPlans from "./components/FloorPlans";
 import { getFloorPlansThunk } from "./store/floor_plan";
+import FloorPlanIndex from "./components/FloorPlanIndex";
 
 
 function App() {
@@ -59,6 +60,9 @@ function App() {
                 criteria={criteria}
                 setCriteria={setCriteria}
               />
+            </Route>
+            <Route path="/floor-plans/:id">
+              <FloorPlanIndex />
             </Route>
           </Switch>
       )}
