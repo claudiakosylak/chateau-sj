@@ -4,6 +4,7 @@ import { useHistory, useParams } from "react-router-dom/cjs/react-router-dom.min
 import { useDispatch, useSelector } from "react-redux";
 import { getFloorPlansThunk } from "../../store/floor_plan";
 import { getApartmentsThunk } from "../../store/apartment";
+import { dateCleaner } from "../../helpers";
 
 function FloorPlanIndex() {
     const dispatch = useDispatch();
@@ -34,10 +35,10 @@ function FloorPlanIndex() {
                     </div>
                     <div className="fpi-apartments-list">
                         {apartments.map((apartment, index) => (
-                            <div key={apartment.id}>
+                            <div key={apartment.id} className="fpi-apartment-item">
                                 <p>{index + 1}</p>
-                                <p>{apartment.date_available}</p>
-                                </div>
+                                <p>{dateCleaner(apartment.date_available)}</p>
+                            </div>
                         ))}
                     </div>
                 </div>
