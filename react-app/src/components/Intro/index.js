@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./Intro.css";
+import styles from "./Intro.module.sass";
 
 function Intro({ scrollToRef }) {
     const images = [
@@ -16,11 +16,11 @@ function Intro({ scrollToRef }) {
     }, 3000)
 
     return (
-        <div className="intro-wrapper" >
-            <div className="intro-ref" ref={scrollToRef}></div>
+        <div className={styles.wrapper} >
+            <div className={styles.ref} ref={scrollToRef}></div>
             <img src={images[currentImage]}></img>
-            <div className="dark-cover">
-                <div className="intro-content">
+            <div className={styles.dark}>
+                <div className={styles.content}>
                     <h2>Picture yourself here...</h2>
                     <p>Lorem ipsum dolor sit amet. Qui unde corrupti qui voluptas dolor est quis.</p>
                 </div>

@@ -16,12 +16,14 @@ body {
     max-width: 100vW;
     height: 100vH;
     max-height: 100vH;
+    overflow-x: hidden;
   }
 
 #root {
     width: 100%;
     height: 100%;
-    max-width: 100%;
+    max-width: 100vW;
     max-height: 100%;
     overflow-y: auto;
+    overflow-x: hidden;
 }
