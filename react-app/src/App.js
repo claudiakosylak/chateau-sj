@@ -7,9 +7,11 @@ import LandingPage from "./components/LandingPage";
 import FloorPlans from "./components/FloorPlans";
 import { getFloorPlansThunk } from "./store/floor_plan";
 import FloorPlanIndex from "./components/FloorPlanIndex";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 
 function App() {
+  const history = useHistory();
   const [criteria, setCriteria] = useState(null);
   const floorPlans = useSelector(state => state.floorPlan.floorPlans)
   let floorPlanArray = Object.values(floorPlans);
@@ -18,6 +20,7 @@ function App() {
   const floorPlanScrollRef = useRef(null);
   const contactScrollRef = useRef(null);
   const searchScrollRef = useRef(null);
+  const indexScrollRef = useRef(null);
 
   const executeScroll = (targetRef) => {
     console.log(targetRef.current);
@@ -49,7 +52,15 @@ function App() {
                 aboutScrollRef={aboutScrollRef}
                 floorPlanScrollRef={floorPlanScrollRef}
                 contactScrollRef={contactScrollRef}
-                onNavigate={() => executeScroll(topScrollRef)}
+                onNavigate={() => {
+                  if (!history.location.state) {
+                    executeScroll(topScrollRef)
+                  } else if (history.location.state.to === "about") {
+                    executeScroll(aboutScrollRef)
+                  } else if (history.location.state.to === "contact") {
+                    executeScroll(contactScrollRef)
+                  }
+                }}
                 setCriteria={setCriteria}
               />
             </Route>
@@ -62,7 +73,10 @@ function App() {
               />
             </Route>
             <Route path="/floor-plans/:id">
-              <FloorPlanIndex />
+              <FloorPlanIndex
+                indexScrollRef={indexScrollRef}
+                onNavigate={() => executeScroll(indexScrollRef)}
+              />
             </Route>
           </Switch>
       )}

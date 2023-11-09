@@ -6,7 +6,7 @@ import { getFloorPlansThunk } from "../../store/floor_plan";
 import { getApartmentsThunk } from "../../store/apartment";
 import { dateCleaner } from "../../helpers";
 
-function FloorPlanIndex() {
+function FloorPlanIndex({ indexScrollRef, onNavigate }) {
     const dispatch = useDispatch();
     const history = useHistory();
     const { id } = useParams();
@@ -29,6 +29,10 @@ function FloorPlanIndex() {
         dispatch(getApartmentsThunk());
     }, [])
 
+    useEffect(() => {
+        onNavigate();
+    }, [id])
+
     const handleLeft = () => {
         if (image === 0) {
             setImage(images.length - 1)
@@ -45,10 +49,9 @@ function FloorPlanIndex() {
         }
     }
 
-    console.log("apartments: ", apartments)
-
     return (
         <div className="fpi-wrapper">
+            <div className="fpi-ref" ref={indexScrollRef}></div>
             <div className="fpi-top">
                 <i className="fa-solid fa-arrow-left back-button" onClick={() => history.push("/floor-plans")}></i>
                 <h2>{plan?.name}</h2>
@@ -68,7 +71,7 @@ function FloorPlanIndex() {
                                 </div>
                             ))}
                         </div>
-                        <button className="fpi-contact">Contact Us</button>
+                        <button className="fpi-contact" onClick={() => history.push("/", {to: "contact"})}>Contact Us</button>
                         <div className="fpi-floor-plan-details">
                             <p>Rent: ${plan?.monthly_rent}</p>
                             <p>Deposit: ${plan?.deposit_amount}</p>
