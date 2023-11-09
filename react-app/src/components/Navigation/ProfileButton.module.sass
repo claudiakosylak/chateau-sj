@@ -1,0 +1,78 @@
+@import ../../helpers
+
+.icon
+    background: none
+    border: none
+    color: white
+    display: flex
+    flex-direction: column
+    gap: 10px
+    margin-right: 30px
+    +m
+        margin-right: 20px
+    &:before
+        height: 3px
+        width: 30px
+        background-color: white
+        position: absolute
+        z-index: 2
+        content: ''
+        display: block
+        border-radius: 2px
+        top: 68px
+        +m
+            top: 43px
+    &:after
+        height: 3px
+        width: 30px
+        background-color: white
+        position: absolute
+        z-index: 2
+        content: ''
+        display: block
+        border-radius: 2px
+        bottom: 68px
+        +m
+            bottom: 43px
+
+.icon_open
+    background: none
+    border: none
+    color: white
+    display: flex
+    flex-direction: column
+    gap: 10px
+    margin-right: 30px
+    &:before
+        height: 3px
+        width: 30px
+        background-color: white
+        position: absolute
+        z-index: 2
+        content: ''
+        display: block
+        border-radius: 2px
+        top: 68px
+        transform: translateY(5px) rotate(45deg)
+        transition: transform .2s
+        +m
+            top: 43px
+    &:after
+        height: 3px
+        width: 30px
+        background-color: white
+        position: absolute
+        z-index: 2
+        content: ''
+        display: block
+        border-radius: 2px
+        bottom: 69px
+        transform: translateY(-5px) rotate(-45deg)
+        transition: transform .2s
+        +m
+            bottom: 44px
+
+.burger_wrapper
+    cursor: pointer
+    width: 40px
+    height: 40px

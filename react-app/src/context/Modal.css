@@ -83,3 +83,19 @@
       transform: translateY(100%);
   }
 }
+
+@media only screen and (max-width: 767px) {
+  #modal {
+    top: 100px;
+  }
+  #modal-background {
+    top: 100px;
+  }
+  #modal-content {
+    width: 100%;
+  }
+  #modal-content-close {
+    width: 100%;
+    max-width: 100%;
+  }
+}

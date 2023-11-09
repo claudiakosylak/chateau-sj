@@ -1,5 +1,5 @@
 import React from 'react';
-import "./Menu.css";
+import styles from "./Menu.module.sass";
 import { NavLink, useLocation } from 'react-router-dom';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
@@ -8,16 +8,16 @@ function Menu({onHomePress, onAboutPress, onFloorPlanPress, onContactPress, clos
     const history = useHistory();
 
     return (
-        <nav className="menu-wrapper">
+        <nav className={styles.wrapper}>
             {location.pathname !== "/" ? (
-                <NavLink exact to="/" className="menu-links" onClick={closeMenu}>Home</NavLink>
+                <NavLink exact to="/" className={styles.links} onClick={closeMenu}>Home</NavLink>
             ) : (
-                <div className="menu-links" onClick={() => {
+                <div className={styles.links} onClick={() => {
                     onHomePress();
                     closeMenu();
                 }}>Home</div>
             )}
-            <div className="menu-links" onClick={() => {
+            <div className={styles.links} onClick={() => {
                 if (location.pathname !== "/") {
                     history.push("/", {to: "about"})
                 } else {
@@ -25,7 +25,7 @@ function Menu({onHomePress, onAboutPress, onFloorPlanPress, onContactPress, clos
                 }
                 closeMenu();
                 }}>About</div>
-            <div className="menu-links" onClick={() => {
+            <div className={styles.links} onClick={() => {
                 if (location.pathname !== "/") {
                     history.push("/floor-plans")
                 } else {
@@ -33,7 +33,7 @@ function Menu({onHomePress, onAboutPress, onFloorPlanPress, onContactPress, clos
                 }
                 closeMenu();
             }}>Floor Plans</div>
-            <div className="menu-links" onClick={() => {
+            <div className={styles.links} onClick={() => {
                 if (location.pathname !== "/") {
                     history.push("/", {to: "contact"})
                 } else {

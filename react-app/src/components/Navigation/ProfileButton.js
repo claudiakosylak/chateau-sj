@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Menu from "../Menu";
+import styles from "./ProfileButton.module.sass";
 
 function ProfileButton({ onHomePress, onAboutPress, onFloorPlanPress, onContactPress }) {
   // const dispatch = useDispatch();
@@ -18,12 +19,12 @@ function ProfileButton({ onHomePress, onAboutPress, onFloorPlanPress, onContactP
   return (
     <>
       {!showMenu ? (
-        <div className="burger-wrapper" onClick={() => setShowMenu(true)}>
-          <button className="menu-icon"></button>
+        <div className={styles.burger_wrapper} onClick={() => setShowMenu(true)}>
+          <button className={styles.icon}></button>
         </div>
       ) : (
-        <div className="burger-wrapper" onClick={handleClose}>
-          <button className="menu-icon-open"></button>
+        <div className={styles.burger_wrapper} onClick={handleClose}>
+          <button className={styles.icon_open}></button>
         </div>
       )}
 
