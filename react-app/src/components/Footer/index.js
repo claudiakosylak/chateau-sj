@@ -1,10 +1,10 @@
 import React from "react";
-import "./Footer.css";
+import styles from "./Footer.module.sass";
 
 function Footer() {
 
     return (
-        <div className="footer-wrapper">
+        <div className={styles.wrapper}>
             <p>Admin Login</p>
         </div>
     )
