@@ -1,20 +1,20 @@
 import React from "react";
-import "./DarkSection.css";
+import styles from "./DarkSection.module.sass";
 import ContactForm from "../ContactForm";
 
 function DarkSection({ title, src, scrollToRef }) {
 
     return (
-        <div className="dark-section-wrapper" >
-            <div className="dark-section-ref" ref={scrollToRef}></div>
+        <div className={styles.wrapper} >
+            <div className={styles.ref} ref={scrollToRef}></div>
             {/* <ScrollAnimation animateIn="fadeIn" className="dark-section-inner" animateOnce={false} duration={1}> */}
-            <div className="dark-section-inner">
-                <div className="dark-section-left">
+            <div className={styles.inner}>
+                <div className={styles.left}>
                     {title !== "contact" && (
                         <img src={src}></img>
                     )}
                     {title === "contact" && (
-                        <div className="contact-left">
+                        <div className={styles.contact_left}>
                             <p>1234 Address Dr<br></br>Fresno, CA 00000</p>
                             <p>(559) 555-5555</p>
                             <p>chateausanjose@email.com</p>
@@ -22,7 +22,7 @@ function DarkSection({ title, src, scrollToRef }) {
                         </div>
                     )}
                 </div>
-                <div className="dark-section-right">
+                <div className={styles.right}>
                     <h3>{title === "welcome" ? "Welcome" : "Contact Us"}</h3>
                     {title === "welcome" ? (
                         <p>Lorem ipsum dolor sit amet. Et quidem dolor ut commodi omnis est rerum magnam est voluptatem enim ab consectetur eaque. Ea dolorem asperiores est sequi excepturi ut accusamus sapiente ex laborum dolor? In perspiciatis Quis sed esse obcaecati et dolor minima. Eos molestiae quas qui amet galisum qui odit sunt est doloribus incidunt in voluptatem assumenda.</p>

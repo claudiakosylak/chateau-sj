@@ -4,11 +4,16 @@ import Intro from "../Intro";
 import DarkSection from "../DarkSection";
 import SearchApartments from "../SearchApartments";
 import Footer from "../Footer";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 function LandingPage({topScrollRef, aboutScrollRef, floorPlanScrollRef, contactScrollRef, onNavigate, setCriteria}) {
+    const history = useHistory();
 
     useEffect(() => {
         onNavigate();
+        if (history.location.state) {
+            history.replace("/")
+        }
     }, [])
 
     return (

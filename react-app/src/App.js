@@ -22,6 +22,9 @@ function App() {
   const searchScrollRef = useRef(null);
   const indexScrollRef = useRef(null);
 
+
+  console.log("HISTORY: ", history)
+
   const executeScroll = (targetRef) => {
     console.log(targetRef.current);
     if (targetRef.current) {
