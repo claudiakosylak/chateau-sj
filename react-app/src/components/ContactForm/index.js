@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./ContactForm.css";
+import styles from "./ContactForm.module.sass";
 
 function ContactForm() {
     const [name, setName] = useState("");
@@ -42,34 +42,34 @@ function ContactForm() {
     }
 
     return (
-        <form className="contact-form" onSubmit={handleSubmit}>
+        <form className={styles.form} onSubmit={handleSubmit}>
             {(hasSubmitted && errors.name) && (
-                <p className="contact-errors">{errors.name}</p>
+                <p className={styles.errors}>{errors.name}</p>
             )}
             <label>
                 Name
-                <input type="text" value={name} onChange={(e) => setName(e.target.value)} className="contact-form-inputs"></input>
+                <input type="text" value={name} onChange={(e) => setName(e.target.value)} className={styles.inputs}></input>
             </label>
             {(hasSubmitted && errors.email) && (
-                <p className="contact-errors">{errors.email}</p>
+                <p className={styles.errors}>{errors.email}</p>
             )}
             <label>
                 Email
-                <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} className="contact-form-inputs"></input>
+                <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} className={styles.inputs}></input>
             </label>
             {(hasSubmitted && errors.phone) && (
-                <p className="contact-errors">{errors.phone}</p>
+                <p className={styles.errors}>{errors.phone}</p>
             )}
             <label>
                 Phone
-                <input type="phone" value={phone} onChange={(e) => setPhone(e.target.value)} className="contact-form-inputs"></input>
+                <input type="phone" value={phone} onChange={(e) => setPhone(e.target.value)} className={styles.inputs}></input>
             </label>
             {(hasSubmitted && errors.bedrooms) && (
-                <p className="contact-errors">{errors.bedrooms}</p>
+                <p className={styles.errors}>{errors.bedrooms}</p>
             )}
             <label>
                 Bedrooms
-                <select value={bedrooms} onChange={(e) => setBedrooms(e.target.value)} className="contact-form-inputs">
+                <select value={bedrooms} onChange={(e) => setBedrooms(e.target.value)} className={styles.inputs}>
                     <option value="" disabled>select</option>
                     <option value="studio">Studio</option>
                     <option value="1">1</option>
@@ -79,11 +79,11 @@ function ContactForm() {
                 </select>
             </label>
             {(hasSubmitted && errors.date) && (
-                <p className="contact-errors">{errors.date}</p>
+                <p className={styles.errors}>{errors.date}</p>
             )}
             <label>
                 Move-in Date
-                <input type="date" id="move-in-date" value={moveInDate} onChange={(e) => setMoveInDate(e.target.value)} className="contact-form-inputs"></input>
+                <input type="date" id="move-in-date" value={moveInDate} onChange={(e) => setMoveInDate(e.target.value)} className={styles.inputs}></input>
             </label>
             <button type="submit">Submit</button>
         </form>
