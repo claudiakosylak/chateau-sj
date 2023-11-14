@@ -9,6 +9,7 @@ import LoginFormPage from "./components/LoginFormPage";
 import { getFloorPlansThunk } from "./store/floor_plan";
 import FloorPlanIndex from "./components/FloorPlanIndex";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import AdminHome from "./components/AdminHome";
 
 
 function App() {
@@ -81,6 +82,9 @@ function App() {
             </Route>
             <Route exact path="/login">
               <LoginFormPage />
+            </Route>
+            <Route exact path="/admin">
+              <AdminHome floorPlans={floorPlanArray}/>
             </Route>
           </Switch>
       )}

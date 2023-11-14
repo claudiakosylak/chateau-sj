@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./FloorPlanItem.module.sass";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
-function FloorPlanItem({floorPlan}) {
+function FloorPlanItem({ floorPlan, admin }) {
     const history = useHistory();
 
     const openFloorPlan = (id) => {
@@ -22,7 +22,14 @@ function FloorPlanItem({floorPlan}) {
                 <p>Starting at ${floorPlan.monthly_rent}</p>
                 <p>Deposit ${floorPlan.deposit_amount}</p>
             </div>
-            <button className={styles.availability} onClick={() => openFloorPlan(floorPlan.id)}>Availability</button>
+            {admin === false ? (
+                <button className={styles.availability} onClick={() => openFloorPlan(floorPlan.id)}>Availability</button>
+            ) : (
+                <div className={styles.admin_buttons}>
+                    <button className={styles.admin_button}>Edit</button>
+                    <button className={styles.admin_button}>View Availability</button>
+                </div>
+            )}
         </div>
     )
 }

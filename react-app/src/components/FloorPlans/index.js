@@ -97,7 +97,7 @@ function FloorPlans({ searchScrollRef, onNavigate, floorPlans, criteria, setCrit
             </form>
             <div className={styles.grid}>
                 {results.map((floorPlan, index) => (
-                    <FloorPlanItem floorPlan={floorPlan} key={index} />
+                    <FloorPlanItem floorPlan={floorPlan} key={index} admin={false}/>
                 ))}
             </div>
             <Footer />
