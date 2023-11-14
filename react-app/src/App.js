@@ -5,6 +5,7 @@ import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import LandingPage from "./components/LandingPage";
 import FloorPlans from "./components/FloorPlans";
+import LoginFormPage from "./components/LoginFormPage";
 import { getFloorPlansThunk } from "./store/floor_plan";
 import FloorPlanIndex from "./components/FloorPlanIndex";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
@@ -21,9 +22,6 @@ function App() {
   const contactScrollRef = useRef(null);
   const searchScrollRef = useRef(null);
   const indexScrollRef = useRef(null);
-
-
-  console.log("HISTORY: ", history)
 
   const executeScroll = (targetRef) => {
     console.log(targetRef.current);
@@ -80,6 +78,9 @@ function App() {
                 indexScrollRef={indexScrollRef}
                 onNavigate={() => executeScroll(indexScrollRef)}
               />
+            </Route>
+            <Route exact path="/login">
+              <LoginFormPage />
             </Route>
           </Switch>
       )}
