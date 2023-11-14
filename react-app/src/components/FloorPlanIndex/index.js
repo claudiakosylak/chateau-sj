@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import "./FloorPlanIndex.css";
+import styles from "./FloorPlanIndex.module.sass";
 import { useHistory, useParams } from "react-router-dom/cjs/react-router-dom.min";
 import { useDispatch, useSelector } from "react-redux";
 import { getFloorPlansThunk } from "../../store/floor_plan";
 import { getApartmentsThunk } from "../../store/apartment";
 import { dateCleaner } from "../../helpers";
+import Footer from "../Footer";
 
 function FloorPlanIndex({ indexScrollRef, onNavigate }) {
     const dispatch = useDispatch();
@@ -50,39 +51,48 @@ function FloorPlanIndex({ indexScrollRef, onNavigate }) {
     }
 
     return (
-        <div className="fpi-wrapper">
-            <div className="fpi-ref" ref={indexScrollRef}></div>
-            <div className="fpi-top">
-                <i className="fa-solid fa-arrow-left back-button" onClick={() => history.push("/floor-plans")}></i>
-                <h2>{plan?.name}</h2>
-                <div className="fpi-top-middle">
-
-                    <div className="fpi-carousel">
-                        <i className="fa-solid fa-angle-left carousel-button" onClick={handleLeft}></i>
-                        <img src={images[image]} alt={`${plan?.name} picture`}></img>
-                        <i className="fa-solid fa-angle-right carousel-button" onClick={handleRight}></i>
+        <>
+            <div className={styles.wrapper}>
+                <div className={styles.ref} ref={indexScrollRef}></div>
+                <div className={styles.top}>
+                    <div className={styles.back}>
+                    <i className={`fa-solid fa-arrow-left ${styles.back_button}`} onClick={() => history.push("/floor-plans")}></i>
+                    <p>Back to floor plans</p>
                     </div>
-                    <div className="fpi-apt-details">
-                        <div className="fpi-apartments-list">
-                            {apartments.map((apartment, index) => (
-                                <div key={apartment.id} className="fpi-apartment-item">
-                                    <p>{index + 1}</p>
-                                    <p>{dateCleaner(apartment.date_available)}</p>
-                                </div>
-                            ))}
+                    <h2>{plan?.name}</h2>
+                    <div className={styles.top_middle}>
+
+                        <div className={styles.carousel}>
+                            <i className={`fa-solid fa-angle-left ${styles.carousel_button}`} onClick={handleLeft}></i>
+                            <img src={images[image]} alt={`${plan?.name} picture`}></img>
+                            <i className={`fa-solid fa-angle-right ${styles.carousel_button}`} onClick={handleRight}></i>
                         </div>
-                        <button className="fpi-contact" onClick={() => history.push("/", {to: "contact"})}>Contact Us</button>
-                        <div className="fpi-floor-plan-details">
-                            <p>Rent: ${plan?.monthly_rent}</p>
-                            <p>Deposit: ${plan?.deposit_amount}</p>
-                            <p>Sq. Ft.: {plan?.square_feet}</p>
-                            <p>{plan?.bedrooms === 0 ? "Studio" : plan?.bedrooms === 1 ? `${plan?.bedrooms} Bedroom` : `${plan?.bedrooms} Bedrooms`}</p>
-                            <p>{plan?.bathrooms === 1 ? "1 Bathroom" : `${plan?.bathrooms} Bathrooms`}</p>
+                        <div className={styles.apt_details}>
+                            <div className={styles.apartments_list}>
+                                <h3>Available Units</h3>
+                                {apartments.map((apartment, index) => (
+                                    <div key={apartment.id} className={styles.apartment_item}>
+                                        <p>{index + 1}</p>
+                                        <p>{dateCleaner(apartment.date_available)}</p>
+                                    </div>
+                                ))}
+                            </div>
+                            <div className={styles.floor_plan_details}>
+                                <div className={styles.floor_plan_left}>
+                                    <p>Rent: ${plan?.monthly_rent}</p>
+                                    <p>Deposit: ${plan?.deposit_amount}</p>
+                                    <p>Sq. Ft.: {plan?.square_feet}</p>
+                                    <p>{plan?.bedrooms === 0 ? "Studio" : plan?.bedrooms === 1 ? `${plan?.bedrooms} Bedroom` : `${plan?.bedrooms} Bedrooms`}</p>
+                                    <p>{plan?.bathrooms === 1 ? "1 Bathroom" : `${plan?.bathrooms} Bathrooms`}</p>
+                                </div>
+                                <button className={styles.contact} onClick={() => history.push("/", { to: "contact" })}>Contact Us</button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+            <Footer />
+        </>
     )
 }
 

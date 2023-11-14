@@ -1,0 +1,128 @@
+@import ../../helpers
+
+.wrapper
+    width: 100%
+    height: 100%
+    margin-top: 150px
+    display: flex
+    flex-direction: column
+    align-items: center
+    position: relative
+    background-color: $lightgrey
+    padding: 50px 100px
+    +m
+        margin-top: 100px
+
+.top
+    width: 100%
+    display: flex
+    flex-direction: column
+    align-items: center
+    margin-top: 50px
+    position: relative
+    & > h2
+        font-size: 50px
+        margin-bottom: 50px
+
+.top_middle
+    width: 100%
+    display: flex
+    gap: 150px
+    align-items: center
+
+.carousel
+    width: 600px
+    max-width: 600px
+    height: 400px
+    display: flex
+    align-items: center
+    justify-content: space-between
+    gap: 15px
+    & > img
+        max-height: 100%
+        object-fit: cover
+        height: 100%
+        border-radius: 32px
+        flex-grow: 1
+        max-width: 600px
+        min-width: 600px
+
+.back
+    position: absolute
+    top: 0
+    left: 100px
+    display: flex
+    flex-direction: row
+    align-items: center
+    justify-content: center
+    gap: 15px
+
+.back_button
+
+    font-size: 40px
+    cursor: pointer
+
+.apartments_list
+    flex-grow: 1
+    display: flex
+    flex-direction: column
+    gap: 20px
+    & > h3
+        font-size: 30px
+        align-self: center
+
+.apartment_item
+    display: flex
+    gap: 20px
+    width: 100%
+    background-color: black
+    color: white
+    border-radius: 15px
+    padding: 20px
+
+.carousel_button
+    background-color: $darkgrey
+    color: white
+    padding: 5px
+    width: 30px
+    height: 30px
+    min-width: 30px
+    min-height: 30px
+    border-radius: 100%
+    display: flex
+    align-items: center
+    justify-content: center
+    cursor: pointer
+
+.apt_details
+    display: flex
+    flex-direction: column
+    flex-grow: 1
+    gap: 40px
+
+.ref
+    position: absolute
+    top: -150px
+    +m
+        top: -100px
+
+.floor_plan_details
+    background-color: white
+    border-radius: 32px
+    padding: 40px 100px
+    display: flex
+    align-items: center
+    justify-content: space-between
+
+.floor_plan_left
+    display: flex
+    flex-direction: column
+    gap: 10px
+
+.contact
+    background-color: $orange
+    border-radius: 15px
+    border: 1px solid $orange
+    padding: 10px
+    font-size: 20px
+    cursor: pointer
