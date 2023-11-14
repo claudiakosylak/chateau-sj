@@ -20,6 +20,22 @@ export const getApartmentsThunk = () => async dispatch => {
     }
 }
 
+export const editApartmentThunk = (date_available, id) => async dispatch => {
+    const response = await fetch(`/api/apartments/${id}`, {
+        method: "PUT",
+		headers: { "Content-Type" : "application/json"},
+		body: JSON.stringify({
+			date_available
+		})
+    })
+    if (response.ok) {
+        const apartment = await response.json();
+        return apartment;
+    } else {
+        return {"error": "Invalid inputs"}
+    }
+}
+
 export default function reducer(state = initialState, action) {
     switch (action.type) {
         case GET_APARTMENTS:

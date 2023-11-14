@@ -52,7 +52,11 @@ function FloorPlanItem({ floorPlan, admin }) {
                         Deposit $:
                         <input type="number" min="0" value={deposit} onChange={(e) => setDeposit(e.target.value)}></input>
                     </label>
+                    <div className={styles.edit_buttons}>
+
+                    <button onClick={() => setEditing(false)}>Cancel</button>
                     <button type="submit">Submit</button>
+                    </div>
                 </form>
             )}
             {admin === false ? (
@@ -60,7 +64,7 @@ function FloorPlanItem({ floorPlan, admin }) {
             ) : (admin === true && editing === false) ? (
                 <div className={styles.admin_buttons}>
                     <button className={styles.admin_button} onClick={() => setEditing(true)}>Edit</button>
-                    <button className={styles.admin_button}>View Availability</button>
+                    <button className={styles.admin_button} onClick={() => openFloorPlan(floorPlan.id)}>View Availability</button>
                 </div>
             ): <div></div>}
         </div>

@@ -1,5 +1,7 @@
-from flask import Blueprint, jsonify
-from app.models import Apartment
+from flask import Blueprint, jsonify, request
+from app.models import Apartment, db
+from flask_login import login_required
+from app.forms import EditApartment
 
 apartment_routes = Blueprint('apartments', __name__)
 
@@ -18,3 +20,17 @@ def apartment(id):
     """
     apartment = Apartment.query.get(id)
     return apartment.to_dict()
+
+@apartment_routes.route('/<int:id>', methods=["PUT"])
+@login_required
+def edit_apartment(id):
+    """"
+    Edits an apartment's date available by apartment ID
+    """
+    apartment = Apartment.query.get(id)
+    form = EditApartment()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        apartment.date_available = form.data["date_available"]
+        db.session.commit()
+        return apartment.to_dict()

@@ -6,6 +6,7 @@ import { getFloorPlansThunk } from "../../store/floor_plan";
 import { getApartmentsThunk } from "../../store/apartment";
 import { dateCleaner } from "../../helpers";
 import Footer from "../Footer";
+import ApartmentItem from "../ApartmentItem";
 
 function FloorPlanIndex({ indexScrollRef, onNavigate }) {
     const dispatch = useDispatch();
@@ -13,6 +14,7 @@ function FloorPlanIndex({ indexScrollRef, onNavigate }) {
     const { id } = useParams();
     const floorPlans = useSelector(state => state.floorPlan.floorPlans);
     const allApartments = useSelector(state => state.apartment.apartments);
+    const user = useSelector(state => state.session.user)
     const apartmentsList = Object.values(allApartments);
     const plan = floorPlans[id];
     const apartments = apartmentsList.filter((apartment) => apartment.floor_plan_id === plan.id)
@@ -56,7 +58,13 @@ function FloorPlanIndex({ indexScrollRef, onNavigate }) {
                 <div className={styles.ref} ref={indexScrollRef}></div>
                 <div className={styles.top}>
                     <div className={styles.back}>
-                    <i className={`fa-solid fa-arrow-left ${styles.back_button}`} onClick={() => history.push("/floor-plans")}></i>
+                    <i className={`fa-solid fa-arrow-left ${styles.back_button}`} onClick={() => {
+                        if (user) {
+                            history.push("/admin")
+                        } else {
+                            history.push("/floor-plans")
+                        }
+                    }}></i>
                     <p>Back to floor plans</p>
                     </div>
                     <h2>{plan?.name}</h2>
@@ -71,10 +79,7 @@ function FloorPlanIndex({ indexScrollRef, onNavigate }) {
                             <div className={styles.apartments_list}>
                                 <h3>Available Units</h3>
                                 {apartments.map((apartment, index) => (
-                                    <div key={apartment.id} className={styles.apartment_item}>
-                                        <p>{index + 1}</p>
-                                        <p>{dateCleaner(apartment.date_available)}</p>
-                                    </div>
+                                    <ApartmentItem key={apartment.id} apartment={apartment} index={index} user={user}/>
                                 ))}
                             </div>
                             <div className={styles.floor_plan_details}>
