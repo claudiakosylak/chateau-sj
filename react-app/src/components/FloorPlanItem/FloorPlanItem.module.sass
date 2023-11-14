@@ -1,0 +1,65 @@
+@import ../../helpers
+
+.wrapper
+    display: flex
+    flex-direction: column
+    align-items: center
+    padding: 30px
+    border-radius: 32px
+    border: 2px solid black
+    background-color: white
+    height: 100%
+    width: 100%
+    box-shadow: none
+    -webkit-box-shadow: none
+    -moz-box-shadow: none
+    transition: height .5s box-shadow .5s width .5s -webkit-box-shadow .5s -moz-box-shadow .5s
+    &:hover
+        width: 102%
+        height: 102%
+        -webkit-box-shadow: 0 0 10px 2px $darkgrey
+        -moz-box-shadow: 0 0 10px 2px $darkgrey
+        box-shadow: 0 0 10px 2px $darkgrey
+    & > h4
+        font-size: 30px
+    & > img
+        width: 100%
+        height: 50%
+        object-fit: cover
+        border-radius: 15px
+        margin-top: 30px
+
+.bed_bath_feet
+    display: flex
+    flex-direction: row
+    justify-content: space-between
+    align-items: center
+    width: 100%
+    margin-top: 30px
+    +m
+        padding: 0 50px
+    +a
+        padding: 0
+
+.rent_deposit
+    display: flex
+    flex-direction: column
+    align-items: center
+    background-color: $orange
+    border-radius: 15px
+    width: 100%
+    padding: 15px
+    margin-top: 20px
+    & > p
+        font-size: 20px
+
+.availability
+    background-color: black
+    color: white
+    border-radius: 15px
+    border: none
+    padding: 15px
+    font-size: 20px
+    margin-top: 20px
+    &:hover
+        background-color: $darkgrey
