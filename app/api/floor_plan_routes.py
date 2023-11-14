@@ -1,5 +1,7 @@
-from flask import Blueprint, jsonify
-from app.models import FloorPlan, Apartment
+from flask import Blueprint, jsonify, request
+from app.models import FloorPlan, Apartment, db
+from flask_login import login_required
+from app.forms import EditFloorPlan
 
 floor_plan_routes = Blueprint('floor_plans', __name__)
 
@@ -17,3 +19,15 @@ def floor_plans():
         result.append(floor_plan)
 
     return {'floor_plans': result}
+
+@floor_plan_routes.route('/<int:id>', methods=["PUT"])
+@login_required
+def edit_floor_plan(id):
+    plan = FloorPlan.query.get(id)
+    form = EditFloorPlan()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        plan.monthly_rent = form.data["rent"]
+        plan.deposit_amount = form.data["deposit"]
+        db.session.commit()
+        return plan.to_dict()

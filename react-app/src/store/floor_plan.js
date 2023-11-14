@@ -19,6 +19,23 @@ export const getFloorPlansThunk = () => async dispatch => {
     }
 }
 
+export const updateFloorPlanThunk = (rent, deposit, planId) => async dispatch => {
+    const response = await fetch(`/api/floor-plans/${planId}`, {
+        method: "PUT",
+		headers: { "Content-Type" : "application/json"},
+		body: JSON.stringify({
+			rent,
+			deposit
+		})
+    })
+    if (response.ok) {
+        const plan = await response.json();
+        return plan;
+    } else {
+        return {"error": "Invalid inputs"}
+    }
+}
+
 export default function reducer(state = initialState, action) {
     switch (action.type) {
         case GET_FLOOR_PLANS:

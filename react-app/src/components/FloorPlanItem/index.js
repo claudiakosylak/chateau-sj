@@ -1,12 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./FloorPlanItem.module.sass";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { useDispatch } from "react-redux";
+import { getFloorPlansThunk, updateFloorPlanThunk } from "../../store/floor_plan";
 
 function FloorPlanItem({ floorPlan, admin }) {
+    const dispatch = useDispatch();
     const history = useHistory();
+    const [editing, setEditing] = useState(false);
+    const [rent, setRent] = useState(floorPlan.monthly_rent)
+    const [deposit, setDeposit] = useState(floorPlan.deposit_amount)
+    const [error, setError ] = useState("");
 
     const openFloorPlan = (id) => {
         history.push(`/floor-plans/${id}`);
+    }
+
+    const handleEdit = (e) => {
+        e.preventDefault();
+        dispatch(updateFloorPlanThunk(rent, deposit, floorPlan.id)).then((response) => {
+            if (response.error) {
+                setError(response.error)
+            } else {
+                setEditing(false)
+                dispatch(getFloorPlansThunk())
+            }
+        })
     }
 
     return (
@@ -18,18 +37,32 @@ function FloorPlanItem({ floorPlan, admin }) {
                 <p>{floorPlan.square_feet} SQ. FT.</p>
             </div>
             <img src="https://images.unsplash.com/photo-1582239052618-4e2324cef034"></img>
+            {!editing ? (
             <div className={styles.rent_deposit}>
                 <p>Starting at ${floorPlan.monthly_rent}</p>
                 <p>Deposit ${floorPlan.deposit_amount}</p>
             </div>
+            ) : (
+                <form className={styles.form} onSubmit={handleEdit}>
+                    <label>
+                        Starting at $:
+                        <input type="number" min="0" value={rent} onChange={(e) => setRent(e.target.value)}></input>
+                    </label>
+                    <label>
+                        Deposit $:
+                        <input type="number" min="0" value={deposit} onChange={(e) => setDeposit(e.target.value)}></input>
+                    </label>
+                    <button type="submit">Submit</button>
+                </form>
+            )}
             {admin === false ? (
                 <button className={styles.availability} onClick={() => openFloorPlan(floorPlan.id)}>Availability</button>
-            ) : (
+            ) : (admin === true && editing === false) ? (
                 <div className={styles.admin_buttons}>
-                    <button className={styles.admin_button}>Edit</button>
+                    <button className={styles.admin_button} onClick={() => setEditing(true)}>Edit</button>
                     <button className={styles.admin_button}>View Availability</button>
                 </div>
-            )}
+            ): <div></div>}
         </div>
     )
 }
