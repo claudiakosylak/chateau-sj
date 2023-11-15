@@ -23,6 +23,7 @@ function App() {
   const contactScrollRef = useRef(null);
   const searchScrollRef = useRef(null);
   const indexScrollRef = useRef(null);
+  const adminScrollRef = useRef(null);
 
   const executeScroll = (targetRef) => {
     console.log(targetRef.current);
@@ -45,6 +46,7 @@ function App() {
         onAboutPress={() => executeScroll(aboutScrollRef)}
         onFloorPlanPress={() => executeScroll(floorPlanScrollRef)}
         onContactPress={() => executeScroll(contactScrollRef)}
+        onAdminPress={() => executeScroll(adminScrollRef)}
       />
       {isLoaded && (
           <Switch>
@@ -84,7 +86,10 @@ function App() {
               <LoginFormPage />
             </Route>
             <Route exact path="/admin">
-              <AdminHome floorPlans={floorPlanArray}/>
+              <AdminHome floorPlans={floorPlanArray}
+                onNavigate={() => executeScroll(adminScrollRef)}
+                adminScrollRef={adminScrollRef}
+              />
             </Route>
           </Switch>
       )}

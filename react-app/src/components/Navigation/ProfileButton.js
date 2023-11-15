@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Menu from "../Menu";
 import styles from "./ProfileButton.module.sass";
 
-function ProfileButton({ onHomePress, onAboutPress, onFloorPlanPress, onContactPress }) {
+function ProfileButton({ onHomePress, onAboutPress, onFloorPlanPress, onContactPress, onAdminPress }) {
   // const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
   const [closeTransition, setCloseTransition] = useState(false);
@@ -43,6 +43,7 @@ function ProfileButton({ onHomePress, onAboutPress, onFloorPlanPress, onContactP
               onFloorPlanPress={onFloorPlanPress}
               onContactPress={onContactPress}
               closeMenu={handleClose}
+              onAdminPress={onAdminPress}
             />
           </div>
           {/* </ReactCSSTransitionGroup> */}

@@ -30,17 +30,20 @@ function ApartmentItem({ apartment, index, user }) {
             {!editing ? (
                 <p>{(todayDate > compareDate && !user) ? "Available immediately" : dateCleaner(apartment.date_available)}</p>
             ) : (
-                <form onSubmit={handleEdit}>
+                <form onSubmit={handleEdit} className={styles.form}>
                     <label>
                         Available on:
                         <input type="date" value={dateAvailable} onChange={(e) => setDateAvailable(e.target.value)}></input>
                     </label>
-                    <button type="submit">Submit</button>
-                    <button onClick={() => setEditing(false)}>Cancel</button>
+                    <div className={styles.form_buttons}>
+
+                        <button type="submit" className={styles.orange_button}>Submit</button>
+                        <button onClick={() => setEditing(false)} className={styles.white_button}>Cancel</button>
+                    </div>
                 </form>
             )}
             {(user && !editing) ? (
-                <button onClick={() => setEditing(true)}>Edit</button>
+                <button onClick={() => setEditing(true)} className={styles.orange_button}>Edit</button>
             ) : <div></div>}
         </div>
     )

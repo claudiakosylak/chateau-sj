@@ -9,3 +9,36 @@
     border-radius: 15px
     padding: 20px
     justify-content: space-between
+
+.orange_button
+    background-color: $orange
+    padding: 5px 10px
+    border-radius: 15px
+    border: 1px solid $orange
+    &:hover
+        background-color: white
+        border: 1px solid white
+
+.white_button
+    background-color: white
+    padding: 5px 10px
+    border-radius: 15px
+    border: 1px solid white
+    &:hover
+        background-color: $lightgrey
+        border: 1px solid $lightgrey
+
+.form
+    display: flex
+    justify-content: space-between
+    flex-grow: 1
+    padding: 0 50px
+    & > label
+        display: flex
+        gap: 20px
+        align-items: center
+
+.form_buttons
+    display: flex
+    align-items: center
+    gap: 20px

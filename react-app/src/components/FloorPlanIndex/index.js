@@ -90,7 +90,9 @@ function FloorPlanIndex({ indexScrollRef, onNavigate }) {
                                     <p>{plan?.bedrooms === 0 ? "Studio" : plan?.bedrooms === 1 ? `${plan?.bedrooms} Bedroom` : `${plan?.bedrooms} Bedrooms`}</p>
                                     <p>{plan?.bathrooms === 1 ? "1 Bathroom" : `${plan?.bathrooms} Bathrooms`}</p>
                                 </div>
-                                <button className={styles.contact} onClick={() => history.push("/", { to: "contact" })}>Contact Us</button>
+                                {!user ? (
+                                    <button className={styles.contact} onClick={() => history.push("/", { to: "contact" })}>Contact Us</button>
+                                ) : <div></div>}
                             </div>
                         </div>
                     </div>

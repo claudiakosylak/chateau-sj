@@ -1,20 +1,28 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./AdminHome.module.sass";
-import { useSelector } from "react-redux";
-import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
+import { useDispatch, useSelector } from "react-redux";
+import { Redirect, useLocation } from "react-router-dom/cjs/react-router-dom.min";
 import FloorPlanItem from "../FloorPlanItem";
+import Footer from "../Footer";
 
-function AdminHome({ floorPlans }) {
+function AdminHome({ floorPlans, onNavigate, adminScrollRef }) {
+    const dispatch = useDispatch();
+    const location = useLocation();
     const user = useSelector(state => state.session.user)
+    const admin = location.pathname === "/admin";
+
+    useEffect(() => {
+        onNavigate();
+    }, [admin])
 
     if (!user) {
         return <Redirect to="/"></Redirect>
     }
 
-    console.log("FLOOR PLANS: ", floorPlans)
 
     return (
         <div className={styles.wrapper}>
+            <div className={styles.ref} ref={adminScrollRef}></div>
             <h2>Admin Home</h2>
             <div className={styles.plans}>
                 {floorPlans?.map(plan => (
@@ -23,6 +31,7 @@ function AdminHome({ floorPlans }) {
                     </div>
                 ))}
             </div>
+            <Footer />
         </div>
     )
 }

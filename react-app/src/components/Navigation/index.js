@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import styles from "./Navigation.module.sass";
 
-function Navigation({ isLoaded, onHomePress, onAboutPress, onFloorPlanPress, onContactPress }) {
+function Navigation({ isLoaded, onHomePress, onAboutPress, onFloorPlanPress, onContactPress, onAdminPress }) {
 	const sessionUser = useSelector(state => state.session.user);
 	const history = useHistory();
 
@@ -18,6 +18,7 @@ function Navigation({ isLoaded, onHomePress, onAboutPress, onFloorPlanPress, onC
 				onAboutPress={onAboutPress}
 				onFloorPlanPress={onFloorPlanPress}
 				onContactPress={onContactPress}
+				onAdminPress={onAdminPress}
 				/>
 			</div>
 		</div>
