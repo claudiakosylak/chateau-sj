@@ -3,11 +3,13 @@ import thunk from 'redux-thunk';
 import session from './session';
 import apartment from './apartment';
 import floorPlan from './floor_plan';
+import contact from './contact';
 
 const rootReducer = combineReducers({
   session,
   apartment,
-  floorPlan
+  floorPlan,
+  contact
 });
 
 

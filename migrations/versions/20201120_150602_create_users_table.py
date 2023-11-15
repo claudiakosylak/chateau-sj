@@ -62,7 +62,7 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(length=100), nullable=False),
     sa.Column('email', sa.String(length=255), nullable=False),
-    sa.Column('phone', sa.Integer(), nullable=False),
+    sa.Column('phone', sa.String(length=15), nullable=False),
     sa.Column('bedrooms', sa.Integer(), nullable=False),
     sa.Column('move_in_date', sa.Date(), nullable=False),
     sa.Column('created_at', sa.DateTime()),

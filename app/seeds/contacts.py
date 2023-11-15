@@ -7,7 +7,7 @@ def seed_contacts():
     num = 5555555555
     for i in range(10):
         contact = Contact(
-            name=f"Example Contact{i}", email=f"contact{i}@email.com", phone=num+1, bedrooms=2, move_in_date=datetime.now()
+            name=f"Example Contact{i}", email=f"contact{i}@email.com", phone=str(num+1), bedrooms=2, move_in_date=datetime.now()
         )
         db.session.add(contact)
     db.session.commit()

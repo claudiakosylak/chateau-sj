@@ -9,6 +9,7 @@ from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
 from .api.floor_plan_routes import floor_plan_routes
 from .api.apartment_routes import apartment_routes
+from .api.contact_routes import contact_routes
 from .seeds import seed_commands
 from .config import Config
 
@@ -32,6 +33,7 @@ app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(floor_plan_routes, url_prefix='/api/floor-plans')
 app.register_blueprint(apartment_routes, url_prefix='/api/apartments')
+app.register_blueprint(contact_routes, url_prefix='/api/contacts')
 db.init_app(app)
 Migrate(app, db)
 
