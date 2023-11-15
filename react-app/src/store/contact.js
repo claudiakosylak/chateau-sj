@@ -22,7 +22,7 @@ export default function reducer(state = initialState, action) {
     switch (action.type) {
         case GET_CONTACTS:
             const contacts = {}
-            for (let contact of action.payload.contacts) {
+            for (let contact of action.contacts.contacts) {
                 contacts[contact.id] = contact;
             }
             return { contacts: contacts }

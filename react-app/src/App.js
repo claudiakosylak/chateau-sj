@@ -10,6 +10,7 @@ import { getFloorPlansThunk } from "./store/floor_plan";
 import FloorPlanIndex from "./components/FloorPlanIndex";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import AdminHome from "./components/AdminHome";
+import Inbox from "./components/Inbox";
 
 
 function App() {
@@ -90,6 +91,9 @@ function App() {
                 onNavigate={() => executeScroll(adminScrollRef)}
                 adminScrollRef={adminScrollRef}
               />
+            </Route>
+            <Route exact path="/inbox">
+              <Inbox />
             </Route>
           </Switch>
       )}
