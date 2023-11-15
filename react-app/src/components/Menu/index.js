@@ -59,6 +59,7 @@ function Menu({ onHomePress, onAboutPress, onFloorPlanPress, onContactPress, clo
         ): (
             <nav className={styles.wrapper}>
                 <NavLink exact to="/admin" className={styles.links} onClick={closeMenu}>Admin Home</NavLink>
+                <NavLink exact to="/inbox" className={styles.links} onClick={closeMenu}>Inbox</NavLink>
                 <div className={styles.links} onClick={handleLogout}>Log Out</div>
             </nav>
         )}

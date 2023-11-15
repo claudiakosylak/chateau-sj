@@ -24,7 +24,7 @@ function Inbox() {
             setLast(false)
         }
         setShowContacts(contacts.slice(page * 5, (page * 5 + 5)))
-    }, [contacts])
+    }, [contacts.length])
 
     const handleNext = () => {
         setPage(page + 1)

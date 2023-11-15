@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
 import styles from "./ContactForm.module.sass";
+import { useDispatch } from "react-redux";
+import { createContactThunk } from "../../store/contact";
 
 function ContactForm() {
+    const dispatch = useDispatch();
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
@@ -29,15 +32,27 @@ function ContactForm() {
         if (Object.keys(errors).length > 0) {
             setHasSubmitted(true)
         } else {
-            const contactInfo = `You have a request from ${name} who is interested in a ${bedrooms} bed apartment with a desired move-in date of ${moveInDate}. You may reach them by email at ${email} or by phone at ${phone}`
-            console.log("CONTACT: ", contactInfo)
-            setName("");
-            setEmail("");
-            setPhone("");
-            setBedrooms("");
-            setMoveInDate("");
-            setHasSubmitted(false);
-            alert("Thanks for reaching out! Someone will be in touch with you shortly.")
+            const contactInfo = {
+                name: name,
+                email: email,
+                phone: phone,
+                bedrooms: parseInt(bedrooms),
+                move_in_date: moveInDate
+            }
+            dispatch(createContactThunk(contactInfo)).then((response) => {
+                console.log("RESPONSE: ", response)
+                if (response.errors) {
+                    alert("There has been an error. Please try again.")
+                } else {
+                    setName("");
+                    setEmail("");
+                    setPhone("");
+                    setBedrooms("");
+                    setMoveInDate("");
+                    setHasSubmitted(false);
+                    alert("Thanks for reaching out! Someone will be in touch with you shortly.")
+                }
+            })
         }
     }
 
@@ -71,7 +86,7 @@ function ContactForm() {
                 Bedrooms
                 <select value={bedrooms} onChange={(e) => setBedrooms(e.target.value)} className={styles.inputs}>
                     <option value="" disabled>select</option>
-                    <option value="studio">Studio</option>
+                    <option value="0">Studio</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
