@@ -1,11 +1,24 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./DarkSection.module.sass";
 import ContactForm from "../ContactForm";
 
 function DarkSection({ title, src, scrollToRef }) {
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 474 ? true : false)
+    const [hasErrors, setHasErrors] = useState(false)
+
+    useEffect(() => {
+        window.addEventListener("resize", () => {
+            if (window.innerWidth <= 474) setIsMobile(true)
+            else setIsMobile(false)
+        })
+        return () => window.removeEventListener("resize", () => {
+            if (window.innerWidth <= 474) setIsMobile(true)
+            else setIsMobile(false)
+        })
+    })
 
     return (
-        <div className={styles.wrapper} >
+        <div className={styles.wrapper} style={(isMobile && !hasErrors) ? {height: "fit-content"} : (isMobile && hasErrors) ? {height: "990px"} : {height: "fit-content"} }>
             <div className={styles.ref} ref={scrollToRef}></div>
             {/* <ScrollAnimation animateIn="fadeIn" className="dark-section-inner" animateOnce={false} duration={1}> */}
             <div className={styles.inner}>
@@ -28,7 +41,7 @@ function DarkSection({ title, src, scrollToRef }) {
                         <p>Lorem ipsum dolor sit amet. Et quidem dolor ut commodi omnis est rerum magnam est voluptatem enim ab consectetur eaque. Ea dolorem asperiores est sequi excepturi ut accusamus sapiente ex laborum dolor? In perspiciatis Quis sed esse obcaecati et dolor minima. Eos molestiae quas qui amet galisum qui odit sunt est doloribus incidunt in voluptatem assumenda.</p>
                     ) : (
                         <>
-                           <ContactForm />
+                           <ContactForm setHasErrors={setHasErrors}/>
                         </>
                     )}
                 </div>

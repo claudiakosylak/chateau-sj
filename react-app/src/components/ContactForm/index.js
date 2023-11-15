@@ -3,7 +3,7 @@ import styles from "./ContactForm.module.sass";
 import { useDispatch } from "react-redux";
 import { createContactThunk } from "../../store/contact";
 
-function ContactForm() {
+function ContactForm({ setHasErrors }) {
     const dispatch = useDispatch();
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
@@ -31,6 +31,7 @@ function ContactForm() {
         e.preventDefault();
         if (Object.keys(errors).length > 0) {
             setHasSubmitted(true)
+            setHasErrors(true)
         } else {
             const contactInfo = {
                 name: name,
@@ -50,6 +51,7 @@ function ContactForm() {
                     setBedrooms("");
                     setMoveInDate("");
                     setHasSubmitted(false);
+                    setHasErrors(false);
                     alert("Thanks for reaching out! Someone will be in touch with you shortly.")
                 }
             })
