@@ -8,3 +8,28 @@
     display: flex
     align-items: center
     justify-content: space-between
+    +d
+        flex-direction: column
+        gap: 15px
+
+.left
+    +d
+        align-self: flex-start
+
+.middle
+    +d
+        align-self: flex-start
+        margin-left: 200px
+    +t
+        margin-left: 150px
+    +m
+        margin-left: 20px
+
+.right
+    +d
+        align-self: flex-start
+        margin-left: 200px
+    +t
+        margin-left: 150px
+    +m
+        margin-left: 20px

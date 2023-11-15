@@ -9,6 +9,10 @@
     border-radius: 15px
     padding: 20px
     justify-content: space-between
+    +x
+        padding: 10px
+    +t
+        padding: 20px
 
 .orange_button
     background-color: $orange
@@ -33,12 +37,35 @@
     justify-content: space-between
     flex-grow: 1
     padding: 0 50px
+    +r(1560)
+        padding: 0 20px
+    +r(1500)
+        flex-direction: column
+        gap: 20px
+    +t
+        flex-direction: row
+    +r(670)
+        flex-direction: column
     & > label
         display: flex
         gap: 20px
         align-items: center
+        +d
+            flex-direction: column
+        +t
+            flex-direction: row
+        +s
+            flex-direction: column
 
 .form_buttons
     display: flex
     align-items: center
     gap: 20px
+    +r(1500)
+        align-self: flex-end
+    +d
+        align-self: center
+    +r(670)
+        align-self: flex-end
+    +s
+        align-self: center

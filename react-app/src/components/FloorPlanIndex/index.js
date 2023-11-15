@@ -65,7 +65,6 @@ function FloorPlanIndex({ indexScrollRef, onNavigate }) {
                             history.push("/floor-plans")
                         }
                     }}></i>
-                    <p>Back to floor plans</p>
                     </div>
                     <h2>{plan?.name}</h2>
                     <div className={styles.top_middle}>

@@ -49,7 +49,7 @@ function Inbox() {
                     {page > 0 ? (
                         <button onClick={handlePrevious} className={styles.page_buttons}>Previous</button>
                     ) : <div className={styles.page_buttons}></div>}
-                    <div>Results {page * 5 + 1} - {page * 5 + 5} of {contacts.length}</div>
+                    <div className={styles.results}>Results {page * 5 + 1} - {page * 5 + 5} of {contacts.length}</div>
                     {!last ? (
                         <button onClick={handleNext} className={styles.page_buttons}>Next</button>
                     ) : <div className={styles.page_buttons}></div>}
