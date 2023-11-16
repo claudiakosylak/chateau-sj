@@ -5,20 +5,23 @@
     right: 0
     left: 0
     max-width: 100vW
-    height: calc(100vH - 150px)
+    height: object-fit
+    min-height: calc(100vH - 150px)
     position: relative
     display: flex
     align-items: center
     justify-content: center
     +m
-        height: calc(100vH - 100px)
+        min-height: calc(100vH - 100px)
     & > img
         position: relative
         height: 100%
         max-height: 100%
-        max-width: 100vW
+        min-height: calc(100vH - 150px)
         width: 100%
         object-fit: cover
+        +m
+            min-height: calc(100vH - 100px)
 
 .ref
     position: absolute
@@ -39,7 +42,6 @@
     text-align: center
 
 .inner
-    position: absolute
     width: 650px
     background-color: $lightgrey
     border-radius: 32px
