@@ -27,7 +27,7 @@ function Inbox() {
     }, [contacts.length])
 
     useEffect(() => {
-        if ((page * 5 + 5) > contacts.length) {
+        if ((page * 5 + 5) >= contacts.length) {
             setShowContacts(contacts.slice(page * 5))
             setLast(true)
         } else {
