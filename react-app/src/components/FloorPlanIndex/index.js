@@ -13,11 +13,11 @@ function FloorPlanIndex({ indexScrollRef, onNavigate }) {
     const history = useHistory();
     const { id } = useParams();
     const floorPlans = useSelector(state => state.floorPlan.floorPlans);
-    const allApartments = useSelector(state => state.apartment.apartments);
+    // const allApartments = useSelector(state => state.apartment.apartments);
     const user = useSelector(state => state.session.user)
-    const apartmentsList = Object.values(allApartments);
+    // const apartmentsList = Object.values(allApartments);
     const plan = floorPlans[id];
-    const apartments = apartmentsList.filter((apartment) => apartment.floor_plan_id === plan.id)
+    // const apartments = apartmentsList.filter((apartment) => apartment.floor_plan_id === plan.id)
     const images = [plan?.image_1,
         "https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&fit=crop&q=80&w=2070&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         "https://images.unsplash.com/photo-1630699144867-37acec97df5a?auto=format&fit=crop&q=80&w=2070&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -29,7 +29,7 @@ function FloorPlanIndex({ indexScrollRef, onNavigate }) {
 
     useEffect(() => {
         dispatch(getFloorPlansThunk());
-        dispatch(getApartmentsThunk());
+        // dispatch(getApartmentsThunk());
     }, [])
 
     useEffect(() => {
@@ -51,6 +51,7 @@ function FloorPlanIndex({ indexScrollRef, onNavigate }) {
             setImage(image + 1);
         }
     }
+
 
     return (
         <>
@@ -77,7 +78,7 @@ function FloorPlanIndex({ indexScrollRef, onNavigate }) {
                         <div className={styles.apt_details}>
                             <div className={styles.apartments_list}>
                                 <h3>Available Units</h3>
-                                {apartments.map((apartment, index) => (
+                                {plan?.apartments.map((apartment, index) => (
                                     <ApartmentItem key={apartment.id} apartment={apartment} index={index} user={user}/>
                                 ))}
                             </div>
