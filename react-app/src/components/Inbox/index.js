@@ -26,14 +26,32 @@ function Inbox() {
         setShowContacts(contacts.slice(page * 5, (page * 5 + 5)))
     }, [contacts.length])
 
+    useEffect(() => {
+        if ((page * 5 + 5) > contacts.length) {
+            setShowContacts(contacts.slice(page * 5))
+            setLast(true)
+        } else {
+            setShowContacts(contacts.slice(page * 5, (page * 5 + 5)))
+            setLast(false)
+        }
+    }, [page])
+
     const handleNext = () => {
         setPage(page + 1)
-        setShowContacts(contacts.slice(page * 5, (page * 5 + 5)))
+        // if ((page * 5 + 5) > contacts.length) {
+        //     setShowContacts(contacts.slice(page * 5))
+        //     setLast(true)
+        // } else {
+        //     setShowContacts(contacts.slice(page * 5, (page * 5 + 5)))
+        // }
     }
 
     const handlePrevious = () => {
         setPage(page - 1)
-        setShowContacts(contacts.slice(page * 5, (page * 5 + 5)))
+        // if ((page * 5 + 5) < contacts.length) {
+        //     setLast(false)
+        // }
+        // setShowContacts(contacts.slice(page * 5, (page * 5 + 5)))
     }
 
     return (
